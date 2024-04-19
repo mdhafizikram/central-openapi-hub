@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SwaggerUI" />
+    <title>Central Swagger UI Hub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui.min.css"
+      integrity="sha512-+9UD8YSD9GF7FzOH38L9S6y56aYNx3R4dYbOCgvTJ2ZHpJScsahNdaMQJU/8osUiz9FPu0YZ8wdKf4evUbsGSg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .swagger-ui .topbar {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome to the Central Swagger UI Hub</h1>
+
+    <!-- Buttons/Links for each application -->
+    <button onclick="loadSwaggerUI('pet-app')">PET APP</button>
+    <button onclick="loadSwaggerUI('user-app')">USER APP</button>
+
+    <div id="swagger-ui-container"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui-bundle.min.js"
+      integrity="sha512-Oyp7xNHbiqXREQwbwSbshTEOEV1jkBOXbkYECDesbW1IdY0pII8fsCT+LMULYGYp4wGy/9oPOyrtVNWnqhNZsg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui-standalone-preset.min.js"
+      integrity="sha512-UDDH+CssLO201s4ZfdnN9mKNPtD2j0FWPXDZ8MDy8HmbdErs5Epx1E5QH5eokVY2NRTBIEmdmcMttW8UeKDEBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      function loadSwaggerUI(appName) {
+        console.log(`Loading Swagger UI for ${appName}`);
+        // Remove existing Swagger UI
+        const existingSwaggerUI = document.getElementById(
+          "swagger-ui-container"
+        );
+        if (existingSwaggerUI) {
+          existingSwaggerUI.innerHTML = "";
+        }
+
+        // Create new Swagger UI
+        const swaggerUI = document.createElement("div");
+        swaggerUI.id = "swagger-ui";
+        document.getElementById("swagger-ui-container").appendChild(swaggerUI);
+
+        // Load Swagger UI for the selected application
+        window.ui = SwaggerUIBundle({
+          url: `/openApi/${appName}/openapi.json`,
+          dom_id: "#swagger-ui",
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          layout: "StandaloneLayout",
+        });
+      }
+    </script>
+  </body>
+</html>
