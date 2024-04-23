@@ -772,9 +772,39 @@
             "example": "Student Option"
           },
           "topics": {
-            "type": "string",
+            "type": "array",
             "description": "Topics information.",
-            "example": "C++",
+            "items": {
+              "type": "object",
+              "properties": {
+                "totalCompletionsAllowed": {
+                  "type": "integer",
+                  "description": "Total completions allowed for the topic.",
+                  "example": 1
+                },
+                "description": {
+                  "type": "string",
+                  "description": "topic description",
+                  "example": "Introduction to Programming I"
+                },
+                "totalUnitsAllowed": {
+                  "type": "integer",
+                  "description": "Total units allowed for the topic.",
+                  "example": 3
+                },
+                "topicLinkId": {
+                  "type": "integer",
+                  "description": "link id for the topic",
+                  "example": 109586
+                },
+                "courseRepeatable": {
+                  "type": "boolean",
+                  "description": "Indicates if the topic is repeatable.",
+                  "example": false
+                }
+              }
+            },
+
             "nullable": true
           },
           "components": {
