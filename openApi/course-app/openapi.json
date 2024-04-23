@@ -1,0 +1,1084 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ASU Course Catalog API",
+    "description": "Our API allows users to effortlessly explore a wide range of courses offered by various Colleges and Schools at Arizona State University. With intuitive endpoints and comprehensive filters, users can easily navigate through different academic programs, view course details, and access essential information, empowering them to make informed decisions about their educational journey at ASU.",
+    "contact": {
+      "email": "customerservice@asu.edu"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.myasuplat-dpl.asu.edu"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Courses",
+      "description": "Operations related to courses"
+    }
+  ],
+  "paths": {
+    "/api/course/{strm}/{courseId}/{courseOfferNumber}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "courseId",
+          "in": "path",
+          "required": true,
+          "description": "The course ID.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "courseOfferNumber",
+          "in": "path",
+          "required": true,
+          "description": "The course offer number.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get course details by CourseID, term and offer number",
+        "description": "Returns details of a specific course for a given term, courseId , courseOfferingNumber.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like equivalent courses.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class/{strm}/subject/{subject}/{catalogNumber}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "subject",
+          "in": "path",
+          "required": true,
+          "description": "The subject of the course.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "catalogNumber",
+          "in": "path",
+          "required": true,
+          "description": "The catalog number of the course.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get class details by term, subject, and catalog number",
+        "description": "Returns details of classes for a given term, subject, and catalog number.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like instructor details.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Class not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for class not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/course/{strm}/{courseId}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "courseId",
+          "in": "path",
+          "required": true,
+          "description": "The course ID.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get course details by CourseID and term",
+        "description": "Returns details of a specific course for a given term and courseId.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like equivalent courses.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/course/{strm}/subject/{subject}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "subject",
+          "in": "path",
+          "required": true,
+          "description": "The subject code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "catalogNumberStart",
+          "in": "query",
+          "description": "Catalog number start (inclusive).",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "name": "catalogNumberEnd",
+          "in": "query",
+          "description": "Catalog number end (inclusive).",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "description": "Include additional information like equivalent courses.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get courses by subject and catalog number range",
+        "description": "Returns courses for a subject within a specified catalog number range.",
+        "parameters": [
+          {
+            "name": "catalogNumberStart",
+            "in": "query",
+            "description": "Catalog number start (inclusive).",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "catalogNumberEnd",
+            "in": "query",
+            "description": "Catalog number end (inclusive).",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like equivalent courses.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Courses not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for courses not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/course/{strm}/subject/{subject}/{catalogNumber}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "subject",
+          "in": "path",
+          "required": true,
+          "description": "The subject of the course.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "catalogNumber",
+          "in": "path",
+          "required": true,
+          "description": "The catalog number of the course.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get course details by CourseID, term, subject, and catalog number",
+        "description": "Returns details of a specific course for a given term, subject, and catalog number.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like equivalent courses.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/course/{strm}": {
+      "parameters": [
+        {
+          "name": "strm",
+          "in": "path",
+          "required": true,
+          "description": "The term code.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "courseId",
+          "in": "query",
+          "description": "The course ID.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "ownedByCollege",
+          "in": "query",
+          "description": "The academic organization code of the college.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "ownedByDepartment",
+          "in": "query",
+          "description": "The academic organization code of the department.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "description": "Include additional information like equivalent courses.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Courses"],
+        "summary": "Get course details by term and optional filters",
+        "description": "Returns details of courses for a given term and optional filters like courseId, ownedByCollege, ownedByDepartment, include equivalentCourses.",
+        "parameters": [
+          {
+            "name": "strm",
+            "in": "path",
+            "required": true,
+            "description": "The term code.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "courseId",
+            "in": "query",
+            "description": "The course ID.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ownedByCollege",
+            "in": "query",
+            "description": "The academic organization code of the college.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ownedByDepartment",
+            "in": "query",
+            "description": "The academic organization code of the department.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like equivalent courses.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Course"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Course": {
+        "type": "object",
+        "properties": {
+          "strm": {
+            "type": "string",
+            "description": "The term code."
+          },
+          "courseId": {
+            "type": "string",
+            "description": "The course ID."
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Timestamp of the response."
+          },
+          "courseOfferNumber": {
+            "type": "string",
+            "description": "The course offer number."
+          },
+          "subject": {
+            "type": "string",
+            "description": "The subject of the course."
+          },
+          "catalogNumber": {
+            "type": "string",
+            "description": "The catalog number of the course."
+          },
+          "primaryOwningDepartmentAcadOrg": {
+            "type": "string",
+            "description": "The primary owning department academic organization."
+          },
+          "primaryOwningParentCollegeAcadOrg": {
+            "type": "string",
+            "description": "The primary owning parent college academic organization."
+          },
+          "splitOwners": {
+            "type": "string",
+            "description": "Split owners information."
+          },
+          "primaryOwningDepartmentDescription": {
+            "type": "string",
+            "description": "Description of the primary owning department."
+          },
+          "primaryOwningParentCollegeDescription": {
+            "type": "string",
+            "description": "Description of the primary owning parent college."
+          },
+          "catalogPrint": {
+            "type": "boolean",
+            "description": "Indicates if the course is printable in the catalog."
+          },
+          "acadCareerCode": {
+            "type": "string",
+            "description": "Academic career code."
+          },
+          "description": {
+            "type": "string",
+            "description": "Short description of the course."
+          },
+          "fullDescription": {
+            "type": "string",
+            "description": "Full description of the course."
+          },
+          "approvedUnitsMinimum": {
+            "type": "number",
+            "description": "Minimum approved units for the course."
+          },
+          "approvedUnitsMaximum": {
+            "type": "number",
+            "description": "Maximum approved units for the course."
+          },
+          "defaultUnitsMinimum": {
+            "type": "number",
+            "description": "Minimum default units for the course."
+          },
+          "defaultUnitsMaximum": {
+            "type": "number",
+            "description": "Maximum default units for the course."
+          },
+          "academicProgressUnits": {
+            "type": "number",
+            "description": "Academic progress units for the course."
+          },
+          "financialAidProgressUnits": {
+            "type": "number",
+            "description": "Financial aid progress units for the course."
+          },
+          "courseRepeatable": {
+            "type": "boolean",
+            "description": "Indicates if the course is repeatable."
+          },
+          "totalCompletionsAllowed": {
+            "type": "integer",
+            "description": "Total completions allowed for the course."
+          },
+          "totalUnitsAllowed": {
+            "type": "number",
+            "description": "Total units allowed for the course."
+          },
+          "allowMultipleEnrollmentsInTerm": {
+            "type": "boolean",
+            "description": "Indicates if multiple enrollments are allowed in a term."
+          },
+          "requirementDesignationCode": {
+            "type": "string",
+            "description": "Requirement designation code."
+          },
+          "requirementDesignationDescription": {
+            "type": "string",
+            "description": "Requirement designation description."
+          },
+          "requirementGroupCode": {
+            "type": "number",
+            "description": "Requirement group code."
+          },
+          "requirementGroupDescription": {
+            "type": "string",
+            "description": "Requirement group description."
+          },
+          "greatestTermOffered": {
+            "type": "string",
+            "description": "Greatest term in which the course is offered."
+          },
+          "equivalentCourseGroupId": {
+            "type": "number",
+            "description": "Equivalent course group ID."
+          },
+          "gradingBasisCode": {
+            "type": "string",
+            "description": "Grading basis code."
+          },
+          "gradingBasisDescription": {
+            "type": "string",
+            "description": "Grading basis description."
+          },
+          "topics": {
+            "type": "string",
+            "description": "Topics information."
+          },
+          "components": {
+            "type": "array",
+            "description": "Components of the course.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Component code."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Component description."
+                },
+                "graded": {
+                  "type": "boolean",
+                  "description": "Indicates if the component is graded."
+                },
+                "optional": {
+                  "type": "boolean",
+                  "description": "Indicates if the component is optional."
+                },
+                "primary": {
+                  "type": "boolean",
+                  "description": "Indicates if the component is primary."
+                }
+              }
+            }
+          },
+          "equivalentCourses": {
+            "type": "array",
+            "description": "Equivalent courses information.",
+            "items": {}
+          }
+        }
+      },
+      "Class": {
+        "type": "object",
+        "properties": {
+          "strm": {
+            "type": "string",
+            "description": "The term code."
+          },
+          "classNumber": {
+            "type": "string",
+            "description": "The class number."
+          },
+          "courseId": {
+            "type": "string",
+            "description": "The course ID."
+          },
+          "courseOfferNumber": {
+            "type": "string",
+            "description": "The course offer number."
+          },
+          "sessionCode": {
+            "type": "string",
+            "description": "The session code."
+          },
+          "classSection": {
+            "type": "string",
+            "description": "The class section."
+          },
+          "subject": {
+            "type": "string",
+            "description": "The subject of the course."
+          },
+          "catalogNumber": {
+            "type": "string",
+            "description": "The catalog number of the course."
+          },
+          "schedulePrint": {
+            "type": "boolean",
+            "description": "Indicates if the schedule is printable."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the class."
+          },
+          "classStatusCode": {
+            "type": "string",
+            "description": "The class status code."
+          },
+          "classStatusDescription": {
+            "type": "string",
+            "description": "Description of the class status."
+          },
+          "startDate": {
+            "type": "integer",
+            "description": "Start date of the class."
+          },
+          "endDate": {
+            "type": "integer",
+            "description": "End date of the class."
+          },
+          "locationCode": {
+            "type": "string",
+            "description": "The location code."
+          },
+          "locationDescription": {
+            "type": "string",
+            "description": "Description of the location."
+          },
+          "campusCode": {
+            "type": "string",
+            "description": "The campus code."
+          },
+          "courseComponent": {
+            "type": "string",
+            "description": "The course component code."
+          },
+          "courseComponentDescription": {
+            "type": "string",
+            "description": "Description of the course component."
+          },
+          "gradedComponent": {
+            "type": "boolean",
+            "description": "Indicates if the component is graded."
+          },
+          "associatedClass": {
+            "type": "integer",
+            "description": "Associated class information."
+          },
+          "instructorEdit": {
+            "type": "string",
+            "description": "Instructor edit status."
+          },
+          "courseTopicTitle": {
+            "type": "string",
+            "description": "Title of the course topic."
+          },
+          "promodShell": {
+            "type": "boolean",
+            "description": "Indicates if it's a promod shell."
+          },
+          "offeredByDepartmentAcadOrgCode": {
+            "type": "string",
+            "description": "Department academic organization code."
+          },
+          "offeredByCollegeAcadOrgCode": {
+            "type": "string",
+            "description": "College academic organization code."
+          },
+          "instructionModeCode": {
+            "type": "string",
+            "description": "Instruction mode code."
+          },
+          "combinedSectionsId": {
+            "type": "integer",
+            "description": "Combined sections ID."
+          },
+          "displayTitle": {
+            "type": "string",
+            "description": "Display title of the class."
+          },
+          "enrollmentCapacity": {
+            "type": "integer",
+            "description": "Enrollment capacity of the class."
+          },
+          "finalGradeRosterPosted": {
+            "type": "boolean",
+            "description": "Indicates if the final grade roster is posted."
+          },
+          "classNotes": {
+            "type": "array",
+            "description": "Class notes.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "meetings": {
+            "type": "array",
+            "description": "Meetings information.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "meetingNumber": {
+                  "type": "integer",
+                  "description": "Meeting number."
+                },
+                "instructors": {
+                  "type": "array",
+                  "description": "Instructors information.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "schedulePrint": {
+                        "type": "boolean",
+                        "description": "Indicates if the schedule is printable."
+                      },
+                      "instructorRole": {
+                        "type": "string",
+                        "description": "Instructor's role."
+                      },
+                      "assignSequence": {
+                        "type": "integer",
+                        "description": "Assignment sequence."
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "description": "Instructor's first name."
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "description": "Instructor's last name."
+                      },
+                      "iSearchUrl": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Instructor's search URL."
+                      }
+                    }
+                  }
+                },
+                "startDate": {
+                  "type": "integer",
+                  "description": "Start date of the meeting."
+                },
+                "endDate": {
+                  "type": "integer",
+                  "description": "End date of the meeting."
+                },
+                "startTime": {
+                  "type": "string",
+                  "description": "Start time of the meeting."
+                },
+                "endTime": {
+                  "type": "string",
+                  "description": "End time of the meeting."
+                },
+                "meetDays": {
+                  "type": "array",
+                  "description": "Meeting days.",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "facilityId": {
+                  "type": "string",
+                  "description": "Facility ID."
+                },
+                "facilityLocationCode": {
+                  "type": "string",
+                  "description": "Facility location code."
+                },
+                "facilityRoom": {
+                  "type": "string",
+                  "description": "Facility room."
+                },
+                "facilityDescription": {
+                  "type": "string",
+                  "description": "Facility description."
+                },
+                "buildingCode": {
+                  "type": "string",
+                  "description": "Building code."
+                },
+                "buildingDescription": {
+                  "type": "string",
+                  "description": "Building description."
+                },
+                "buildingCountry": {
+                  "type": "string",
+                  "description": "Building country."
+                },
+                "buildingAddress1": {
+                  "type": "string",
+                  "description": "Building address line 1."
+                },
+                "buildingAddress2": {
+                  "type": "string",
+                  "description": "Building address line 2."
+                },
+                "buildingAddress3": {
+                  "type": "string",
+                  "description": "Building address line 3."
+                },
+                "buildingAddress4": {
+                  "type": "string",
+                  "description": "Building address line 4."
+                },
+                "buildingCity": {
+                  "type": "string",
+                  "description": "Building city."
+                },
+                "buildingState": {
+                  "type": "string",
+                  "description": "Building state."
+                },
+                "buildingPostal": {
+                  "type": "string",
+                  "description": "Building postal code."
+                },
+                "buildingCampus": {
+                  "type": "string",
+                  "description": "Building campus."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
