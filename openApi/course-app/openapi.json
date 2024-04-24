@@ -48,10 +48,9 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
-              "type": "string",
-              "pattern": "^\\d{3}[147][A-Z]$"
+              "type": "string"
             },
             "example": "2247"
           },
@@ -140,7 +139,7 @@
             "description": "Include additional information like instructor details.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -150,8 +149,7 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer",
-              "pattern": "^\\d{3}[147][A-Z]$"
+              "type": "integer"
             },
             "example": 2247
           },
@@ -250,8 +248,7 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer",
-              "pattern": "^\\d{3}[147][A-Z]$"
+              "type": "integer"
             },
             "example": 2247
           },
@@ -328,8 +325,7 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer",
-              "pattern": "^\\d{3}[147][A-Z]$"
+              "type": "integer"
             },
             "example": 2247
           },
@@ -449,8 +445,7 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer",
-              "pattern": "^\\d{3}[147][A-Z]$"
+              "type": "integer"
             },
             "example": 2247
           },
@@ -650,7 +645,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -658,10 +653,9 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
-              "type": "string",
-              "pattern": "^\\d{3}[147]"
+              "type": "string"
             },
             "example": "2247"
           },
@@ -747,7 +741,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -835,7 +829,7 @@
             "name": "strm1",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -858,7 +852,7 @@
             "name": "strm2",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall)",
             "schema": {
               "type": "string"
             },
@@ -946,7 +940,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -2042,7 +2036,7 @@
         }
       }
     },
-    "/api/codeset/student-group": {
+    "/api/codeset/student-groups": {
       "get": {
         "tags": ["Codeset"],
         "summary": "Get Student Groups",
@@ -2104,7 +2098,7 @@
       "StrmParam": {
         "type": "string",
         "pattern": "^\\d{4}[147][A-Z]$",
-        "description": "The term code in the format YYYYT, where YYYY is the year (e.g., 2024 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.)."
+        "description": "The term code in the format YYYT, where YYY is the year (e.g., 2024 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall)."
       },
       "Course": {
         "type": "object",
