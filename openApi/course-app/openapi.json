@@ -577,7 +577,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           }
@@ -733,7 +733,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -821,7 +821,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -932,7 +932,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
