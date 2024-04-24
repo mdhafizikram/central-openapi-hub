@@ -40,7 +40,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -238,7 +238,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -435,7 +435,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -721,7 +721,7 @@
         }
       }
     },
-    "/api/class/{strm}?classNumber={classNumber}": {
+    "/api/class/{strm}": {
       "get": {
         "tags": ["Class"],
         "summary": "Get class details by term and class number",
@@ -809,7 +809,7 @@
         }
       }
     },
-    "/api/class?classKey={strm1}:{classNumber1}&classKey={strm2}:{classNumber2}": {
+    "/api/class": {
       "get": {
         "tags": ["Class"],
         "summary": "Get class details by terms and class numbers",
@@ -825,51 +825,16 @@
             },
             "example": "instructor"
           },
+
           {
-            "name": "strm1",
-            "in": "path",
+            "name": "classKey",
+            "in": "query",
+            "description": "Class key in the format strm:classNumber",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
-            "example": "2247"
-          },
-
-          {
-            "name": "classNumber1",
-            "in": "path",
-            "required": true,
-            "description": "The class number.",
-            "schema": {
-              "type": "integer",
-              "minLength": 1,
-              "maxLength": 10
-            },
-            "example": "63151"
-          },
-          {
-            "name": "strm2",
-            "in": "path",
-            "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall)",
-            "schema": {
-              "type": "string"
-            },
-            "example": "2247"
-          },
-
-          {
-            "name": "classNumber2",
-            "in": "path",
-            "required": true,
-            "description": "The class number.",
-            "schema": {
-              "type": "integer",
-              "minLength": 1,
-              "maxLength": 10
-            },
-            "example": "6432"
+            "example": "2247:63151"
           }
         ],
         "responses": {
@@ -1568,11 +1533,8 @@
             "description": "Include additional data such as non-current colleges, non-credit colleges, and full descriptions.",
             "required": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": ["nonCurrent", "nonCredit", "fullDescription"]
-              }
+              "type": "string",
+              "pattern": "^(nonCurrent|nonCredit|fullDescription)(,(nonCurrent|nonCredit|fullDescription))*$"
             }
           }
         ],
@@ -1639,24 +1601,20 @@
             "description": "Include additional data such as states.",
             "required": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": ["states"]
-              }
+              "type": "string",
+              "enum": ["states"]
             }
           },
+
           {
             "name": "exclude",
             "in": "query",
             "description": "Exclude specific data such as legacy country codes.",
             "required": false,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": ["legacyCountryCodes"]
-              }
+              "type": "string",
+
+              "enum": ["legacyCountryCodes"]
             }
           }
         ],
@@ -1917,7 +1875,7 @@
         }
       }
     },
-    "/api/codeset/onet-career-dat": {
+    "/api/codeset/onet-career-data": {
       "get": {
         "tags": ["Codeset"],
         "summary": "Get ONET Career Data",
@@ -1970,7 +1928,7 @@
         }
       }
     },
-    "/api/codeset/onet-career-dat/{onetCode}": {
+    "/api/codeset/onet-career-data/{onetCode}": {
       "get": {
         "tags": ["Codeset"],
         "summary": "Get ONET Career Data",
@@ -1983,7 +1941,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "maxLength": 7
+              "maxLength": 10
             },
             "example": "15-1011.00"
           }
