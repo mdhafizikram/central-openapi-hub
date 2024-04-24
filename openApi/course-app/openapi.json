@@ -885,7 +885,7 @@
         }
       }
     },
-    "/api/class/{strm}/subject/{subject}?catalogNumberStart={catalogNumberStartInclusive}&catalogNumberEnd={catalogNumberEndInclusive}": {
+    "/api/class/{strm}/subject/{subject}": {
       "get": {
         "tags": ["Class"],
         "summary": "Get class details by subject,terms,catalogNumber ",
@@ -923,7 +923,7 @@
           },
           {
             "name": "catalogNumberStartInclusive",
-            "in": "path",
+            "in": "query",
             "required": true,
             "description": "Catalog number start (inclusive).",
             "schema": {
@@ -936,7 +936,7 @@
 
           {
             "name": "catalogNumberEndInclusive",
-            "in": "path",
+            "in": "query",
             "required": true,
             "description": "Catalog number start (inclusive).",
             "schema": {
