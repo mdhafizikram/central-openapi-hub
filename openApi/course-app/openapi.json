@@ -48,7 +48,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+            "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -462,7 +462,7 @@
             "example": "CSE"
           },
           {
-            "name": "cataogNumber",
+            "name": "catalogNumber",
             "in": "path",
             "required": true,
             "description": "The catalog number of the course.",
@@ -653,7 +653,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+            "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -741,7 +741,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+            "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -908,7 +908,7 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+            "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
             "schema": {
               "type": "string"
             },
@@ -1537,8 +1537,7 @@
             "description": "Include additional data such as non-current colleges",
             "required": false,
             "schema": {
-              "type": "string",
-              "pattern": "^(nonCurrent|nonCredit|fullDescription)(,(nonCurrent|nonCredit|fullDescription))*$"
+              "type": "string"
             },
             "example": "nonCurrent"
           }
