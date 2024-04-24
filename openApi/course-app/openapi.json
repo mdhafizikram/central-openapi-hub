@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ASU Course Catalog API",
+    "title": "Data Potluck API's",
     "description": "Our API allows users to effortlessly explore a wide range of courses offered by various Colleges and Schools at Arizona State University. With intuitive endpoints and comprehensive filters, users can easily navigate through different academic programs, view course details, and access essential information, empowering them to make informed decisions about their educational journey at ASU.",
     "contact": {
       "email": "customerservice@asu.edu"
@@ -17,6 +17,14 @@
     {
       "name": "Courses",
       "description": "Operations related to courses"
+    },
+    {
+      "name": "Class",
+      "description": "Operations related to classes"
+    },
+    {
+      "name": "Codeset",
+      "description": "Operations related to codeset"
     }
   ],
   "paths": {
@@ -31,7 +39,8 @@
             "in": "query",
             "description": "Include additional information like equivalent courses.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "equivalentCourses"
           },
@@ -39,9 +48,10 @@
             "name": "strm",
             "in": "path",
             "required": true,
-            "description": "The term code.",
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
             "schema": {
-              "type": "integer"
+              "type": "string",
+              "pattern": "^\\d{3}[147][A-Z]$"
             },
             "example": "2247"
           },
@@ -51,7 +61,9 @@
             "required": true,
             "description": "The course ID.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
             },
             "example": "104171"
           },
@@ -61,7 +73,9 @@
             "required": true,
             "description": "The course offer number.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 2
             },
             "example": "1"
           }
@@ -125,7 +139,8 @@
             "in": "query",
             "description": "Include additional information like instructor details.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "instructor"
           },
@@ -135,7 +150,8 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "pattern": "^\\d{3}[147][A-Z]$"
             },
             "example": 2247
           },
@@ -145,7 +161,9 @@
             "required": true,
             "description": "The subject of the course.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 10
             },
             "example": "CSE"
           },
@@ -155,7 +173,9 @@
             "required": true,
             "description": "The catalog number of the course.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 3
             },
             "example": 100
           }
@@ -219,7 +239,8 @@
             "in": "query",
             "description": "Include additional information like equivalent courses.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "equivalentCourses"
           },
@@ -229,7 +250,8 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "pattern": "^\\d{3}[147][A-Z]$"
             },
             "example": 2247
           },
@@ -239,7 +261,9 @@
             "required": true,
             "description": "The course ID.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
             },
             "example": 104171
           }
@@ -304,7 +328,8 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "pattern": "^\\d{3}[147][A-Z]$"
             },
             "example": 2247
           },
@@ -323,7 +348,9 @@
             "in": "query",
             "description": "Catalog number start (inclusive).",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 3
             },
             "example": 100
           },
@@ -332,7 +359,9 @@
             "in": "query",
             "description": "Catalog number end (inclusive).",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 3
             },
             "example": 200
           },
@@ -341,7 +370,8 @@
             "in": "query",
             "description": "Include additional information like equivalent courses.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "equivalentCourses"
           }
@@ -408,7 +438,8 @@
             "in": "query",
             "description": "Include additional information like equivalent courses.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "equivalentCourses"
           },
@@ -418,7 +449,8 @@
             "required": true,
             "description": "The term code.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "pattern": "^\\d{3}[147][A-Z]$"
             },
             "example": 2247
           },
@@ -428,17 +460,21 @@
             "required": true,
             "description": "The subject of the course.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10
             },
             "example": "CSE"
           },
           {
-            "name": "catalogNumber",
+            "name": "cataogNumber",
             "in": "path",
             "required": true,
             "description": "The catalog number of the course.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 3
             },
             "example": 100
           }
@@ -512,7 +548,9 @@
             "in": "query",
             "description": "The course ID.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
             },
             "example": 104171
           },
@@ -521,7 +559,9 @@
             "in": "query",
             "description": "The academic organization code of the college.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 10
             },
             "example": "CES"
           },
@@ -530,7 +570,9 @@
             "in": "query",
             "description": "The academic organization code of the department.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10
             },
             "example": "CSE"
           },
@@ -539,7 +581,8 @@
             "in": "query",
             "description": "Include additional information like equivalent courses.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
             },
             "example": "equivalentCourses"
           }
@@ -594,10 +637,944 @@
           }
         }
       }
+    },
+    "/api/class/{strm}/{classNumber}": {
+      "get": {
+        "tags": ["Class"],
+        "summary": "Get class details by term and class number",
+        "description": "Returns details of a specific course for a given term, class number.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like instructor.",
+            "schema": {
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
+            },
+            "example": "instructor"
+          },
+          {
+            "name": "strm",
+            "in": "path",
+            "required": true,
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{3}[147]"
+            },
+            "example": "2247"
+          },
+
+          {
+            "name": "classNumber",
+            "in": "path",
+            "required": true,
+            "description": "The class number.",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "63151"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found.",
+                      "example": "Course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class/{strm}?classNumber={classNumber}": {
+      "get": {
+        "tags": ["Class"],
+        "summary": "Get class details by term and class number",
+        "description": "Returns details of a specific course for a given term, class number.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like instructor.",
+            "schema": {
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
+            },
+            "example": "instructor"
+          },
+          {
+            "name": "strm",
+            "in": "path",
+            "required": true,
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2247"
+          },
+
+          {
+            "name": "classNumber",
+            "in": "path",
+            "required": true,
+            "description": "The class number.",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "63151"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found.",
+                      "example": "Course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class?classKey={strm1}:{classNumber1}&classKey={strm2}:{classNumber2}": {
+      "get": {
+        "tags": ["Class"],
+        "summary": "Get class details by terms and class numbers",
+        "description": "Returns details of a specific course for a given terms, class numbers.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like instructor.",
+            "schema": {
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
+            },
+            "example": "instructor"
+          },
+          {
+            "name": "strm1",
+            "in": "path",
+            "required": true,
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2247"
+          },
+
+          {
+            "name": "classNumber1",
+            "in": "path",
+            "required": true,
+            "description": "The class number.",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "63151"
+          },
+          {
+            "name": "strm2",
+            "in": "path",
+            "required": true,
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2247"
+          },
+
+          {
+            "name": "classNumber2",
+            "in": "path",
+            "required": true,
+            "description": "The class number.",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "6432"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found.",
+                      "example": "Course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/class/{strm}/subject/{subject}?catalogNumberStart={catalogNumberStartInclusive}&catalogNumberEnd={catalogNumberEndInclusive}": {
+      "get": {
+        "tags": ["Class"],
+        "summary": "Get class details by subject,terms,catalogNumber ",
+        "description": "Returns details of a specific course for a given terms,subject, catalogNumber.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional information like instructor.",
+            "schema": {
+              "type": "string",
+              "enum": ["equivalentCourses", "instructor"]
+            },
+            "example": "instructor"
+          },
+          {
+            "name": "strm",
+            "in": "path",
+            "required": true,
+            "description": "The term code in the format YYYTS, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.).",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2247"
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "required": true,
+            "description": "The subject code.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "CSE"
+          },
+          {
+            "name": "catalogNumberStartInclusive",
+            "in": "path",
+            "required": true,
+            "description": "Catalog number start (inclusive).",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "100"
+          },
+
+          {
+            "name": "catalogNumberEndInclusive",
+            "in": "path",
+            "required": true,
+            "description": "Catalog number start (inclusive).",
+            "schema": {
+              "type": "integer",
+              "minLength": 1,
+              "maxLength": 10
+            },
+            "example": "200"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Course not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for course not found.",
+                      "example": "Course not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/campuses": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Campus Codes",
+        "description": "Retrieve a list of campus codes along with their descriptions and location codes.",
+
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Codeset not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for codeset not found.",
+                      "example": "Codeset not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/credit-by-exam": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Credit by Exam Equivalencies",
+        "description": "Retrieve a list of credit by exam equivalencies along with test details and course credits.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional data such as equivalencies.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["equivalencies"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Credit by exam not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for credit by exam not found.",
+                      "example": "Credit by exam not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/credit-by-exam/{testCode}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Credit by Exam Equivalencies for a Specific Test",
+        "description": "Retrieve credit by exam equivalencies for a specific test along with test details and course credits.",
+        "parameters": [
+          {
+            "name": "testCode",
+            "in": "path",
+            "description": "The code of the test for which to retrieve equivalencies.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AP"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional data such as equivalencies.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["equivalencies"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Credit by exam not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for credit by exam not found.",
+                      "example": "Credit by exam not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Credit by Exam Equivalencies for a Test Component",
+        "description": "Retrieve credit by exam equivalencies for a specific test component.",
+        "parameters": [
+          {
+            "name": "testCode",
+            "in": "path",
+            "description": "Code for the test ",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AP"
+          },
+
+          {
+            "name": "testComponentCode",
+            "in": "path",
+            "description": "Code for the test component",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AH"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Credit by exam component not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for credit by exam component not found.",
+                      "example": "Credit by exam component not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}/{testDate}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Credit by Exam Details",
+        "description": "Retrieve credit by exam details for a specific test code, test component code, and test date.",
+        "parameters": [
+          {
+            "name": "testCode",
+            "in": "path",
+            "description": "The code for the test.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AP"
+          },
+          {
+            "name": "testComponentCode",
+            "in": "path",
+            "description": "The code for the test component.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AH"
+          },
+          {
+            "name": "testDate",
+            "in": "path",
+            "description": "The date of the test in yyyy-mm-dd format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2000-12-31"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Credit by exam detail not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for credit by exam detail not found.",
+                      "example": "Credit by exam detail not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}/{testDate}/{testScore}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Credit by Exam Equivalencies by Test Code, Test Component Code, Test Date, and Test Score",
+        "description": "Retrieve credit by exam equivalencies based on specific test parameters.",
+        "parameters": [
+          {
+            "name": "testCode",
+            "in": "path",
+            "description": "The code of the test.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AP"
+          },
+          {
+            "name": "testComponentCode",
+            "in": "path",
+            "description": "The code of the test component.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "example": "AH"
+          },
+          {
+            "name": "testDate",
+            "in": "path",
+            "description": "The date of the test in yyyy-mm-dd format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "example": "2000-12-31"
+          },
+          {
+            "name": "testScore",
+            "in": "path",
+            "description": "The score of the test.",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maxLength": 1
+            },
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Class"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Credit by exam not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for credit by exam not found.",
+                      "example": "Credit by exam not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/colleges": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get College Information",
+        "description": "Retrieve information about colleges including their descriptions, URLs, and current status.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional data such as non-current colleges, non-credit colleges, and full descriptions.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["nonCurrent", "nonCredit", "fullDescription"]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Colleges not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for colleges not found.",
+                      "example": "Colleges not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "StrmParam": {
+        "type": "string",
+        "pattern": "^\\d{4}[147][A-Z]$",
+        "description": "The term code in the format YYYYT, where YYYY is the year (e.g., 2024 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall), and S is the session code (A, B, C, etc.)."
+      },
       "Course": {
         "type": "object",
         "properties": {
