@@ -40,7 +40,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -238,7 +238,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -367,7 +367,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           }
@@ -435,7 +435,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           },
@@ -577,7 +577,7 @@
             "description": "Include additional information like equivalent courses.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["equivalentCourses"]
             },
             "example": "equivalentCourses"
           }
@@ -733,7 +733,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -767,7 +767,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Class"
+                  }
                 }
               }
             }
@@ -821,7 +824,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -932,7 +935,7 @@
             "description": "Include additional information like instructor.",
             "schema": {
               "type": "string",
-              "enum": ["equivalentCourses", "instructor"]
+              "enum": ["instructor"]
             },
             "example": "instructor"
           },
@@ -1042,7 +1045,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Campus"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Campus"
+                  }
                 }
               }
             }
@@ -3009,29 +3015,38 @@
         "properties": {
           "onetOccupationOverride": {
             "type": "string",
-            "description": "The ONET occupation override."
+            "description": "The ONET occupation override.",
+            "example": "15-1011.00"
           },
           "title": {
             "type": "string",
-            "description": "The job title."
+            "description": "The job title.",
+            "example": "Computer and Information Research Scientists"
           },
           "alternateTitles": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Alternate job titles."
+            "description": "Alternate job titles.",
+            "example": [
+              "Artificial Intelligence Specialist",
+              "Bioinformatics Software Developer",
+              "Computational Linguist"
+            ]
           },
           "tags": {
             "type": "object",
             "properties": {
               "brightOutlook": {
                 "type": "boolean",
-                "description": "Indicates if the job has a bright outlook."
+                "description": "Indicates if the job has a bright outlook.",
+                "example": true
               },
               "green": {
                 "type": "boolean",
-                "description": "Indicates if the job is green."
+                "description": "Indicates if the job is green.",
+                "example": true
               }
             },
             "description": "Tags associated with the job."
@@ -3041,7 +3056,11 @@
             "items": {
               "type": "string"
             },
-            "description": "Tasks associated with the job."
+            "description": "Tasks associated with the job.",
+            "example": [
+              "Develop new uses for known materials",
+              "Create new methods for the analysis of data"
+            ]
           },
           "knowledge": {
             "type": "array",
@@ -3050,11 +3069,13 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "Name of the knowledge."
+                  "description": "Name of the knowledge.",
+                  "example": "Computers and Electronics"
                 },
                 "description": {
                   "type": "string",
-                  "description": "Description of the knowledge."
+                  "description": "Description of the knowledge.",
+                  "example": "Knowledge of circuit boards, processors, chips, electronic equipment, and computer hardware and software, including applications and programming."
                 }
               }
             },
@@ -3067,11 +3088,13 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "Name of the ability."
+                  "description": "Name of the ability.",
+                  "example": "Deductive Reasoning"
                 },
                 "description": {
                   "type": "string",
-                  "description": "Description of the ability."
+                  "description": "Description of the ability.",
+                  "example": "The ability to apply general rules to specific problems to produce answers that make sense."
                 }
               }
             },
@@ -3082,15 +3105,18 @@
             "properties": {
               "hourlyMean": {
                 "type": "number",
-                "description": "Hourly mean wage."
+                "description": "Hourly mean wage.",
+                "example": 53.0
               },
               "hourlyPct10": {
                 "type": "number",
-                "description": "Hourly 10th percentile wage."
+                "description": "Hourly 10th percentile wage.",
+                "example": 29.0
               },
               "hourlyPct25": {
                 "type": "number",
-                "description": "Hourly 25th percentile wage."
+                "description": "Hourly 25th percentile wage.",
+                "example": 37.0
               }
             },
             "description": "US wage data."
@@ -3100,15 +3126,18 @@
             "properties": {
               "hourlyMean": {
                 "type": "number",
-                "description": "Arizona hourly mean wage."
+                "description": "Arizona hourly mean wage.",
+                "example": 52.0
               },
               "hourlyPct10": {
                 "type": "number",
-                "description": "Arizona hourly 10th percentile wage."
+                "description": "Arizona hourly 10th percentile wage.",
+                "example": 29.0
               },
               "hourlyPct25": {
                 "type": "number",
-                "description": "Arizona hourly 25th percentile wage."
+                "description": "Arizona hourly 25th percentile wage.",
+                "example": 36.0
               }
             },
             "description": "Arizona wage data."
@@ -3118,22 +3147,26 @@
             "properties": {
               "employment": {
                 "type": "number",
-                "description": "Employment count."
+                "description": "Employment count.",
+                "example": 1000
               },
               "employmentChange": {
                 "type": "number",
-                "description": "Employment change count."
+                "description": "Employment change count.",
+                "example": 100
               }
             },
             "description": "Employment data."
           },
           "wageYear": {
             "type": "integer",
-            "description": "The year for wage data."
+            "description": "The year for wage data.",
+            "example": 2020
           },
           "employmentYear": {
             "type": "integer",
-            "description": "The year for employment data."
+            "description": "The year for employment data.",
+            "example": 2020
           }
         }
       },
