@@ -130,7 +130,7 @@
     },
     "/api/class/{strm}/subject/{subject}/{catalogNumber}": {
       "get": {
-        "tags": ["Courses"],
+        "tags": ["Class"],
         "summary": "Get class details by term, subject, and catalog number",
         "description": "Returns details of classes for a given term, subject, and catalog number.",
         "parameters": [
@@ -1048,7 +1048,73 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/Campus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Codeset not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for codeset not found.",
+                      "example": "Codeset not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/campus/{campusCode}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Specific Campus Code",
+        "description": "Retrieve  campus code along with their descriptions and location codes.",
+        "parameters": [
+          {
+            "name": "campusCode",
+            "in": "path",
+            "required": true,
+            "description": "The campus code.",
+            "schema": {
+              "type": "string",
+              "maxLength": 10
+            },
+            "example": "TUCSN"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campus"
                 }
               }
             }
@@ -1113,7 +1179,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/CreditByExam"
                 }
               }
             }
@@ -1189,7 +1255,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/CreditByExam"
                 }
               }
             }
@@ -1267,7 +1333,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/CreditByExam"
                 }
               }
             }
@@ -1355,7 +1421,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/CreditByExam"
                 }
               }
             }
@@ -1454,7 +1520,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Class"
+                  "$ref": "#/components/schemas/CreditByExam"
                 }
               }
             }
@@ -1541,6 +1607,471 @@
                       "type": "string",
                       "description": "Error message for colleges not found.",
                       "example": "Colleges not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/countries": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Countries Information",
+        "description": "Retrieve information about countries including their states.",
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Include additional data such as states.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["states"]
+              }
+            }
+          },
+          {
+            "name": "exclude",
+            "in": "query",
+            "description": "Exclude specific data such as legacy country codes.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["legacyCountryCodes"]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Country"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Countries not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for countries not found.",
+                      "example": "Countries not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/ethnicities": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Ethnicities",
+        "description": "Retrieve a list of ethnicities along with their codes and descriptions.",
+
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ethnicity"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ethnicities not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for ethnicities not found.",
+                      "example": "Ethnicities not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/degrees": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Degrees Information",
+        "description": "Retrieve information about degrees based on degree codes.",
+        "parameters": [
+          {
+            "name": "degreeCode",
+            "in": "query",
+            "description": "The degree code to filter degrees.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 1
+            },
+            "example": "A"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Degree"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Degrees not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for degrees not found.",
+                      "example": "Degrees not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/external-organizations/usa-states-cities": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get USA States and Cities",
+        "description": "Retrieve a list of USA states along with their cities based on the school type and state code.",
+        "parameters": [
+          {
+            "name": "schoolTypeCode",
+            "in": "query",
+            "description": "The type of school .",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["HS", "2YR", "4YR", "VOC", "COL", "UNV"]
+            },
+            "example": "4YR"
+          },
+          {
+            "name": "stateCode",
+            "in": "query",
+            "description": "The state code .",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 2
+            },
+            "example": "AL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StateCities"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "States and cities not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for states and cities not found.",
+                      "example": "States and cities not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/onet-career-dat": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get ONET Career Data",
+        "description": "Retrieve ONET career data including job titles, tasks, knowledge, abilities, wage data, and employment data.",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ONETCareerData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for data not found.",
+                      "example": "Data not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/onet-career-dat/{onetCode}": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get ONET Career Data",
+        "description": "Retrieve ONET career data including job titles, tasks, knowledge, abilities, wage data, and employment data.",
+        "parameters": [
+          {
+            "name": "onetCode",
+            "in": "path",
+            "description": "The ONET career code.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 7
+            },
+            "example": "15-1011.00"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ONETCareerData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for data not found.",
+                      "example": "Data not found."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for internal server error.",
+                      "example": "Internal server error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/codeset/student-group": {
+      "get": {
+        "tags": ["Codeset"],
+        "summary": "Get Student Groups",
+        "description": "Retrieve a list of student groups along with their descriptions.",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StudentGroup"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Student groups not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message for student groups not found.",
+                      "example": "Student groups not found."
                     }
                   }
                 }
@@ -2181,6 +2712,449 @@
                 }
               }
             }
+          }
+        }
+      },
+      "Campus": {
+        "type": "object",
+        "properties": {
+          "campusCode": {
+            "type": "string",
+            "description": "The code representing the campus.",
+            "example": "TUCSN"
+          },
+          "description": {
+            "type": "string",
+            "description": "The full description of the campus.",
+            "example": "Tucson"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "A short description of the campus.",
+            "example": "Tucson"
+          },
+          "locationCode": {
+            "type": "string",
+            "description": "The location code of the campus.",
+            "example": "TUCSON"
+          }
+        }
+      },
+      "CreditByExam": {
+        "type": "object",
+        "properties": {
+          "AP": {
+            "type": "object",
+            "properties": {
+              "testCode": {
+                "type": "string",
+                "description": "Test code for the credit by exam.",
+                "example": "AP"
+              },
+              "testDescription": {
+                "type": "string",
+                "description": "Description of the credit by exam.",
+                "example": "Advanced Placement"
+              },
+              "testComponents": {
+                "type": "object",
+                "properties": {
+                  "AH": {
+                    "type": "object",
+                    "properties": {
+                      "testComponentCode": {
+                        "type": "string",
+                        "description": "Test component code.",
+                        "example": "AH"
+                      },
+                      "testComponentDescriptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Descriptions of test components.",
+                        "example": ["American History"]
+                      },
+                      "equivalencies": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "sequenceNumber": {
+                              "type": "string",
+                              "description": "Sequence number for the equivalency.",
+                              "example": "0001"
+                            },
+                            "dateBegin": {
+                              "type": "string",
+                              "description": "Start date of the equivalency.",
+                              "example": "1994-01-01"
+                            },
+                            "dateEnd": {
+                              "type": "string",
+                              "description": "End date of the equivalency.",
+                              "example": "2000-12-31"
+                            },
+                            "minScore": {
+                              "type": "number",
+                              "description": "Minimum score required for the equivalency.",
+                              "example": 4.0
+                            },
+                            "maxScore": {
+                              "type": "number",
+                              "description": "Maximum score allowed for the equivalency.",
+                              "example": 5.99
+                            },
+                            "courseCredits": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "courseId": {
+                                    "type": "string",
+                                    "description": "ID of the course.",
+                                    "example": "100048"
+                                  },
+                                  "courseOfferNumber": {
+                                    "type": "string",
+                                    "description": "Offer number of the course.",
+                                    "example": "1"
+                                  },
+                                  "creditHours": {
+                                    "type": "number",
+                                    "description": "Credit hours for the course.",
+                                    "example": 3.0
+                                  }
+                                }
+                              },
+                              "description": "Course credits associated with the equivalency."
+                            }
+                          }
+                        },
+                        "description": "Equivalencies for the test component."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "College": {
+        "type": "object",
+        "properties": {
+          "acadOrgCode": {
+            "type": "string",
+            "description": "The academic organization code of the college.",
+            "example": "CAR"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the college.",
+            "example": "INACTIVE College of Design"
+          },
+          "alphaSortDescription": {
+            "type": "string",
+            "description": "The alpha-sorted description of the college.",
+            "example": "Design, College of"
+          },
+          "campus": {
+            "type": "string",
+            "description": "The campus where the college is located.",
+            "example": "TEMPE"
+          },
+          "collegeUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the college's website.",
+            "example": "http://www.asu.edu/caed/"
+          },
+          "fullDescription": {
+            "type": "string",
+            "description": "The full description of the college.",
+            "example": "Composed of a dynamic grouping of disciplines, the College of Design..."
+          },
+          "current": {
+            "type": "boolean",
+            "description": "Indicates whether the college is currently active or not.",
+            "example": false
+          },
+          "nonCredit": {
+            "type": "boolean",
+            "description": "Indicates whether the college offers non-credit programs.",
+            "example": false
+          }
+        }
+      },
+      "Country": {
+        "type": "object",
+        "properties": {
+          "countryCode": {
+            "type": "string",
+            "description": "The country code of the country.",
+            "example": "USA"
+          },
+          "countryCodeTwoChar": {
+            "type": "string",
+            "description": "The two-character country code of the country.",
+            "example": "US"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the country.",
+            "example": "United States"
+          },
+          "states": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/State"
+            },
+            "description": "The list of states in the country."
+          }
+        }
+      },
+      "State": {
+        "type": "object",
+        "properties": {
+          "stateCode": {
+            "type": "string",
+            "description": "The state code of the state.",
+            "example": "AL"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the state.",
+            "example": "Alabama"
+          }
+        }
+      },
+      "Ethnicity": {
+        "type": "object",
+        "properties": {
+          "ethnicCategoryCode": {
+            "type": "string",
+            "description": "The code for the ethnic category.",
+            "example": "1"
+          },
+          "ethnicCategoryDescription": {
+            "type": "string",
+            "description": "The description of the ethnic category.",
+            "example": "White"
+          },
+          "ethnicGroups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ethnicGroupCode": {
+                  "type": "string",
+                  "description": "The code for the ethnic group.",
+                  "example": "W"
+                },
+                "ethnicGroupDescription": {
+                  "type": "string",
+                  "description": "The description of the ethnic group.",
+                  "example": "White"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Degree": {
+        "type": "object",
+        "properties": {
+          "degreeCode": {
+            "type": "string",
+            "description": "The code of the degree.",
+            "example": "A"
+          },
+          "descriptionShort": {
+            "type": "string",
+            "description": "A short description of the degree.",
+            "example": "A"
+          },
+          "descriptionLong": {
+            "type": "string",
+            "description": "A long description of the degree.",
+            "example": "Associate Degree"
+          },
+          "educationLevel": {
+            "type": "string",
+            "description": "The education level of the degree.",
+            "example": "10"
+          }
+        }
+      },
+      "StateCities": {
+        "type": "object",
+        "properties": {
+          "stateCode": {
+            "type": "string",
+            "description": "The state code of the USA state.",
+            "example": "AL"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the USA state.",
+            "example": "Alabama"
+          },
+          "cities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of cities in the USA state.",
+            "example": ["Athens", "Auburn", "Birmingham"]
+          }
+        }
+      },
+      "ONETCareerData": {
+        "type": "object",
+        "properties": {
+          "onetOccupationOverride": {
+            "type": "string",
+            "description": "The ONET occupation override."
+          },
+          "title": {
+            "type": "string",
+            "description": "The job title."
+          },
+          "alternateTitles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Alternate job titles."
+          },
+          "tags": {
+            "type": "object",
+            "properties": {
+              "brightOutlook": {
+                "type": "boolean",
+                "description": "Indicates if the job has a bright outlook."
+              },
+              "green": {
+                "type": "boolean",
+                "description": "Indicates if the job is green."
+              }
+            },
+            "description": "Tags associated with the job."
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tasks associated with the job."
+          },
+          "knowledge": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the knowledge."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the knowledge."
+                }
+              }
+            },
+            "description": "Knowledge related to the job."
+          },
+          "abilities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the ability."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the ability."
+                }
+              }
+            },
+            "description": "Abilities related to the job."
+          },
+          "usWageData": {
+            "type": "object",
+            "properties": {
+              "hourlyMean": {
+                "type": "number",
+                "description": "Hourly mean wage."
+              },
+              "hourlyPct10": {
+                "type": "number",
+                "description": "Hourly 10th percentile wage."
+              },
+              "hourlyPct25": {
+                "type": "number",
+                "description": "Hourly 25th percentile wage."
+              }
+            },
+            "description": "US wage data."
+          },
+          "azWageData": {
+            "type": "object",
+            "properties": {
+              "hourlyMean": {
+                "type": "number",
+                "description": "Arizona hourly mean wage."
+              },
+              "hourlyPct10": {
+                "type": "number",
+                "description": "Arizona hourly 10th percentile wage."
+              },
+              "hourlyPct25": {
+                "type": "number",
+                "description": "Arizona hourly 25th percentile wage."
+              }
+            },
+            "description": "Arizona wage data."
+          },
+          "employmentData": {
+            "type": "object",
+            "properties": {
+              "employment": {
+                "type": "number",
+                "description": "Employment count."
+              },
+              "employmentChange": {
+                "type": "number",
+                "description": "Employment change count."
+              }
+            },
+            "description": "Employment data."
+          },
+          "wageYear": {
+            "type": "integer",
+            "description": "The year for wage data."
+          },
+          "employmentYear": {
+            "type": "integer",
+            "description": "The year for employment data."
+          }
+        }
+      },
+      "StudentGroup": {
+        "type": "object",
+        "properties": {
+          "studentGroupCode": {
+            "type": "string",
+            "description": "The code of the student group.",
+            "example": "00"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the student group.",
+            "example": "Tempe Summer Bridge-Cohort 14"
           }
         }
       }
