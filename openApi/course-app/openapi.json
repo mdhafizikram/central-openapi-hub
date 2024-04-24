@@ -927,7 +927,6 @@
           {
             "name": "catalogNumberStartInclusive",
             "in": "query",
-            "required": true,
             "description": "Catalog number start (inclusive).",
             "schema": {
               "type": "integer",
@@ -940,7 +939,6 @@
           {
             "name": "catalogNumberEndInclusive",
             "in": "query",
-            "required": true,
             "description": "Catalog number start (inclusive).",
             "schema": {
               "type": "integer",
@@ -1536,12 +1534,13 @@
           {
             "name": "include",
             "in": "query",
-            "description": "Include additional data such as non-current colleges, non-credit colleges, and full descriptions.",
+            "description": "Include additional data such as non-current colleges",
             "required": false,
             "schema": {
               "type": "string",
               "pattern": "^(nonCurrent|nonCredit|fullDescription)(,(nonCurrent|nonCredit|fullDescription))*$"
-            }
+            },
+            "example": "nonCurrent"
           }
         ],
         "responses": {
@@ -1949,7 +1948,7 @@
               "type": "string",
               "maxLength": 10
             },
-            "example": "15-1011.00"
+            "example": "11-1011.00"
           }
         ],
         "responses": {
@@ -2974,7 +2973,7 @@
           "onetOccupationOverride": {
             "type": "string",
             "description": "The ONET occupation override.",
-            "example": "15-1011.00"
+            "example": "CEO"
           },
           "title": {
             "type": "string",
