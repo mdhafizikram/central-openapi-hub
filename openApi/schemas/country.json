@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "countryCode": {
+      "type": "string",
+      "description": "The country code of the country.",
+      "example": "USA"
+    },
+    "countryCodeTwoChar": {
+      "type": "string",
+      "description": "The two-character country code of the country.",
+      "example": "US"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the country.",
+      "example": "United States"
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "$ref": "./state.json"
+      },
+      "description": "The list of states in the country."
+    }
+  }
+}

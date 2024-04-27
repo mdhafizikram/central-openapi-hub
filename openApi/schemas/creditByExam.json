@@ -1,0 +1,101 @@
+{
+  "type": "object",
+  "properties": {
+    "AP": {
+      "type": "object",
+      "properties": {
+        "testCode": {
+          "type": "string",
+          "description": "Test code for the credit by exam.",
+          "example": "AP"
+        },
+        "testDescription": {
+          "type": "string",
+          "description": "Description of the credit by exam.",
+          "example": "Advanced Placement"
+        },
+        "testComponents": {
+          "type": "object",
+          "properties": {
+            "AH": {
+              "type": "object",
+              "properties": {
+                "testComponentCode": {
+                  "type": "string",
+                  "description": "Test component code.",
+                  "example": "AH"
+                },
+                "testComponentDescriptions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Descriptions of test components.",
+                  "example": ["American History"]
+                },
+                "equivalencies": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "sequenceNumber": {
+                        "type": "string",
+                        "description": "Sequence number for the equivalency.",
+                        "example": "0001"
+                      },
+                      "dateBegin": {
+                        "type": "string",
+                        "description": "Start date of the equivalency.",
+                        "example": "1994-01-01"
+                      },
+                      "dateEnd": {
+                        "type": "string",
+                        "description": "End date of the equivalency.",
+                        "example": "2000-12-31"
+                      },
+                      "minScore": {
+                        "type": "number",
+                        "description": "Minimum score required for the equivalency.",
+                        "example": 4.0
+                      },
+                      "maxScore": {
+                        "type": "number",
+                        "description": "Maximum score allowed for the equivalency.",
+                        "example": 5.99
+                      },
+                      "courseCredits": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "courseId": {
+                              "type": "string",
+                              "description": "ID of the course.",
+                              "example": "100048"
+                            },
+                            "courseOfferNumber": {
+                              "type": "string",
+                              "description": "Offer number of the course.",
+                              "example": "1"
+                            },
+                            "creditHours": {
+                              "type": "number",
+                              "description": "Credit hours for the course.",
+                              "example": 3.0
+                            }
+                          }
+                        },
+                        "description": "Course credits associated with the equivalency."
+                      }
+                    }
+                  },
+                  "description": "Equivalencies for the test component."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

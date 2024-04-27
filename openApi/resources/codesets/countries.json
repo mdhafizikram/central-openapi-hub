@@ -1,0 +1,80 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Countries Information",
+    "description": "Retrieve information about countries including their states.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional data such as states.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["states"]
+        }
+      },
+
+      {
+        "name": "exclude",
+        "in": "query",
+        "description": "Exclude specific data such as legacy country codes.",
+        "required": false,
+        "schema": {
+          "type": "string",
+
+          "enum": ["legacyCountryCodes"]
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/country.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Countries not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for countries not found.",
+                  "example": "Countries not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

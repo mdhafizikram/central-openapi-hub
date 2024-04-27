@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "stateCode": {
+      "type": "string",
+      "description": "The state code of the USA state.",
+      "example": "AL"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the USA state.",
+      "example": "Alabama"
+    },
+    "cities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of cities in the USA state.",
+      "example": ["Athens", "Auburn", "Birmingham"]
+    }
+  }
+}

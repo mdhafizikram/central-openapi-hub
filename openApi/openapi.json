@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Data Potluck API's",
+    "description": "Our API allows users to effortlessly explore a wide range of courses offered by various Colleges and Schools at Arizona State University. With intuitive endpoints and comprehensive filters, users can easily navigate through different academic programs, view course details, and access essential information, empowering them to make informed decisions about their educational journey at ASU.",
+    "contact": {
+      "email": "customerservice@asu.edu"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.myasuplat-dpl.asu.edu"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Courses",
+      "description": "Operations related to courses"
+    },
+    {
+      "name": "Class",
+      "description": "Operations related to classes"
+    },
+    {
+      "name": "Codeset",
+      "description": "Operations related to codeset"
+    }
+  ],
+  "paths": {
+    "/api/class/{strm}/subject/{subject}/{catalogNumber}": {
+      "$ref": "./resources/classes/classByCatalog.json"
+    },
+    "/api/class/{strm}/{classNumber}": {
+      "$ref": "./resources/classes/classByClassNumber.json"
+    },
+    "/api/class/{strm}": {
+      "$ref": "./resources/classes/classByStrm.json"
+    },
+    "/api/class": {
+      "$ref": "./resources/classes/class.json"
+    },
+    "/api/class/{strm}/subject/{subject}": {
+      "$ref": "./resources/classes/classBySubject.json"
+    },
+    "/api/course/{strm}/{courseId}/{courseOfferNumber}": {
+      "$ref": "./resources/courses/courseByCourseOfferNumber.json"
+    },
+    "/api/course/{strm}/{courseId}": {
+      "$ref": "./resources/courses/courseByCourseId.json"
+    },
+    "/api/course/{strm}/subject/{subject}": {
+      "$ref": "./resources/courses/courseBySubject.json"
+    },
+    "/api/course/{strm}/subject/{subject}/{catalogNumber}": {
+      "$ref": "./resources/courses/courseByCatalog.json"
+    },
+    "/api/course/{strm}": {
+      "$ref": "./resources/courses/courseByStrm.json"
+    },
+    "/api/codeset/campuses": {
+      "$ref": "./resources/codesets/campuses.json"
+    },
+    "/api/codeset/campus/{campusCode}": {
+      "$ref": "./resources/codesets/campusByCode.json"
+    },
+    "/api/codeset/credit-by-exam": {
+      "$ref": "./resources/codesets/creditByExam.json"
+    },
+    "/api/codeset/credit-by-exam/{testCode}": {
+      "$ref": "./resources/codesets/creditByExamByTestCode.json"
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}": {
+      "$ref": "./resources/codesets/creditByExamByTestComponentCode.json"
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}/{testDate}": {
+      "$ref": "./resources/codesets/creditByExamByTestDate.json"
+    },
+    "/api/codeset/credit-by-exam/{testCode}/{testComponentCode}/{testDate}/{testScore}": {
+      "$ref": "./resources/codesets/creditByExamByTestScore.json"
+    },
+    "/api/codeset/colleges": {
+      "$ref": "./resources/codesets/colleges.json"
+    },
+    "/api/codeset/countries": {
+      "$ref": "./resources/codesets/countries.json"
+    },
+    "/api/codeset/ethnicities": {
+      "$ref": "./resources/codesets/ethnicities.json"
+    },
+    "/api/codeset/degrees": {
+      "$ref": "./resources/codesets/degrees.json"
+    },
+    "/api/codeset/external-organizations/usa-states-cities": {
+      "$ref": "./resources/codesets/usaStatesCities.json"
+    },
+    "/api/codeset/onet-career-data": {
+      "$ref": "./resources/codesets/onetCareerData.json"
+    },
+    "/api/codeset/onet-career-data/{onetCode}": {
+      "$ref": "./resources/codesets/onetCareerDataByCode.json"
+    },
+    "/api/codeset/student-groups": {
+      "$ref": "./resources/codesets/studentGroups.json"
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "StrmParam": {
+        "$ref": "./schemas/strmParam.json"
+      },
+      "Course": {
+        "$ref": "./schemas/course.json"
+      },
+      "Class": {
+        "$ref": "./schemas/class.json"
+      },
+      "Campus": {
+        "$ref": "./schemas/campus.json"
+      },
+      "CreditByExam": {
+        "$ref": "./schemas/creditByExam.json"
+      },
+      "College": {
+        "$ref": "./schemas/college.json"
+      },
+      "Country": {
+        "$ref": "./schemas/country.json"
+      },
+      "State": {
+        "$ref": "./schemas/state.json"
+      },
+      "Ethnicity": {
+        "$ref": "./schemas/ehnicity.json"
+      },
+      "Degree": {
+        "$ref": "./schemas/degree.json"
+      },
+      "StateCities": {
+        "$ref": "./schemas/stateCities.json"
+      },
+      "ONETCareerData": {
+        "$ref": "./schemas/onetCareerData.json"
+      },
+      "StudentGroup": {
+        "$ref": "./schemas/studentGroup.json"
+      }
+    }
+  }
+}

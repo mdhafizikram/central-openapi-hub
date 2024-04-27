@@ -1,0 +1,76 @@
+{
+  "get": {
+    "tags": ["Class"],
+    "summary": "Get class details by terms and class numbers",
+    "description": "Returns details of a specific course for a given terms, class numbers.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like instructor.",
+        "schema": {
+          "type": "string",
+          "enum": ["instructor"]
+        },
+        "example": "instructor"
+      },
+
+      {
+        "name": "classKey",
+        "in": "query",
+        "description": "Class key in the format strm:classNumber",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "2247:63151"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/class.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Course not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for course not found.",
+                  "example": "Course not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

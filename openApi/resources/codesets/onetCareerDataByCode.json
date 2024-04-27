@@ -1,0 +1,66 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get ONET Career Data",
+    "description": "Retrieve ONET career data including job titles, tasks, knowledge, abilities, wage data, and employment data.",
+    "parameters": [
+      {
+        "name": "onetCode",
+        "in": "path",
+        "description": "The ONET career code.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "example": "11-1011.00"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/onetCareerData.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Data not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for data not found.",
+                  "example": "Data not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

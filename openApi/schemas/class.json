@@ -1,0 +1,325 @@
+{
+  "type": "object",
+  "properties": {
+    "strm": {
+      "type": "string",
+      "description": "The term code.",
+      "example": "2247"
+    },
+    "classNumber": {
+      "type": "string",
+      "description": "The class number.",
+      "example": "63151"
+    },
+    "courseId": {
+      "type": "string",
+      "description": "The course ID.",
+      "example": "104171"
+    },
+    "courseOfferNumber": {
+      "type": "string",
+      "description": "The course offer number.",
+      "example": "1"
+    },
+    "sessionCode": {
+      "type": "string",
+      "description": "The session code.",
+      "example": "A"
+    },
+    "classSection": {
+      "type": "string",
+      "description": "The class section.",
+      "example": "2001"
+    },
+    "subject": {
+      "type": "string",
+      "description": "The subject of the course.",
+      "example": "CSE"
+    },
+    "catalogNumber": {
+      "type": "string",
+      "description": "The catalog number of the course.",
+      "example": "100"
+    },
+    "schedulePrint": {
+      "type": "boolean",
+      "description": "Indicates if the schedule is printable.",
+      "example": true
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the class.",
+      "example": "Prin of Programming with C++"
+    },
+    "classStatusCode": {
+      "type": "string",
+      "description": "The class status code.",
+      "example": "A"
+    },
+    "classStatusDescription": {
+      "type": "string",
+      "description": "Description of the class status.",
+      "example": "Active"
+    },
+    "startDate": {
+      "type": "integer",
+      "description": "Start date of the class.",
+      "example": 1724310000000
+    },
+    "endDate": {
+      "type": "integer",
+      "description": "End date of the class.",
+      "example": 1728630000000
+    },
+    "locationCode": {
+      "type": "string",
+      "description": "The location code.",
+      "example": "ASUONLINE"
+    },
+    "locationDescription": {
+      "type": "string",
+      "description": "Description of the location.",
+      "example": "ASU Online"
+    },
+    "campusCode": {
+      "type": "string",
+      "description": "The campus code.",
+      "example": "TEMPE"
+    },
+    "courseComponent": {
+      "type": "string",
+      "description": "The course component code.",
+      "example": "LEC"
+    },
+    "courseComponentDescription": {
+      "type": "string",
+      "description": "Description of the course component.",
+      "example": "Lecture"
+    },
+    "gradedComponent": {
+      "type": "boolean",
+      "description": "Indicates if the component is graded.",
+      "example": true
+    },
+    "associatedClass": {
+      "type": "integer",
+      "description": "Associated class information.",
+      "example": 2001
+    },
+    "instructorEdit": {
+      "type": "string",
+      "description": "Instructor edit status.",
+      "example": "N"
+    },
+    "courseTopicTitle": {
+      "type": "string",
+      "description": "Title of the course topic.",
+      "example": null
+    },
+    "promodShell": {
+      "type": "boolean",
+      "description": "Indicates if it's a promod shell.",
+      "example": false
+    },
+    "offeredByDepartmentAcadOrgCode": {
+      "type": "string",
+      "description": "Department academic organization code.",
+      "example": "CCOMPENG"
+    },
+    "offeredByCollegeAcadOrgCode": {
+      "type": "string",
+      "description": "College academic organization code.",
+      "example": "CES"
+    },
+    "instructionModeCode": {
+      "type": "string",
+      "description": "Instruction mode code.",
+      "example": "OL"
+    },
+    "combinedSectionsId": {
+      "type": "integer",
+      "description": "Combined sections ID.",
+      "example": null
+    },
+    "displayTitle": {
+      "type": "string",
+      "description": "Display title of the class.",
+      "example": "Prin of Programming with C++"
+    },
+    "enrollmentCapacity": {
+      "type": "integer",
+      "description": "Enrollment capacity of the class.",
+      "example": 200
+    },
+    "finalGradeRosterPosted": {
+      "type": "boolean",
+      "description": "Indicates if the final grade roster is posted.",
+      "example": false
+    },
+    "classNotes": {
+      "type": "array",
+      "description": "Class notes.",
+      "items": {
+        "type": "string"
+      },
+      "example": ["Class notes 1", "Class notes 2"]
+    },
+    "meetings": {
+      "type": "array",
+      "description": "Meetings information.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "meetingNumber": {
+            "type": "integer",
+            "description": "Meeting number.",
+            "example": 1
+          },
+          "instructors": {
+            "type": "array",
+            "description": "Instructors information.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "schedulePrint": {
+                  "type": "boolean",
+                  "description": "Indicates if the schedule is printable.",
+                  "example": true
+                },
+                "instructorRole": {
+                  "type": "string",
+                  "description": "Instructor's role.",
+                  "example": "PI"
+                },
+                "assignSequence": {
+                  "type": "integer",
+                  "description": "Assignment sequence.",
+                  "example": 1
+                },
+                "firstName": {
+                  "type": "string",
+                  "description": "Instructor's first name.",
+                  "example": "John"
+                },
+                "lastName": {
+                  "type": "string",
+                  "description": "Instructor's last name.",
+                  "example": "Doe"
+                },
+                "iSearchUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Instructor's search URL.",
+                  "example": "https://webapp4.asu.edu/directory/person/1234567890"
+                }
+              }
+            }
+          },
+          "startDate": {
+            "type": "integer",
+            "description": "Start date of the meeting.",
+            "example": 1729062000000
+          },
+          "endDate": {
+            "type": "integer",
+            "description": "End date of the meeting.",
+            "example": 1733468400000
+          },
+          "startTime": {
+            "type": "integer",
+            "description": "Start time of the meeting.",
+            "example": 25200000
+          },
+          "endTime": {
+            "type": "integer",
+            "description": "End time of the meeting.",
+            "example": 28800000
+          },
+          "meetDays": {
+            "type": "array",
+            "description": "Meeting days.",
+            "items": {
+              "type": "string"
+            },
+            "example": ["M", "W", "F"]
+          },
+          "facilityId": {
+            "type": "string",
+            "description": "Facility ID.",
+            "example": "CDN60"
+          },
+          "facilityLocationCode": {
+            "type": "string",
+            "description": "Facility location code.",
+            "example": "TEMPE"
+          },
+          "facilityRoom": {
+            "type": "string",
+            "description": "Facility room.",
+            "example": "60"
+          },
+          "facilityDescription": {
+            "type": "string",
+            "description": "Facility description.",
+            "example": "Clg Of Dsgn North 60 (Tempe)"
+          },
+          "buildingCode": {
+            "type": "string",
+            "description": "Building code.",
+            "example": "CDN"
+          },
+          "buildingDescription": {
+            "type": "string",
+            "description": "Building description.",
+            "example": "Design North"
+          },
+          "buildingCountry": {
+            "type": "string",
+            "description": "Building country.",
+            "example": "USA"
+          },
+          "buildingAddress1": {
+            "type": "string",
+            "description": "Building address line 1.",
+            "example": ""
+          },
+          "buildingAddress2": {
+            "type": "string",
+            "description": "Building address line 2.",
+            "example": ""
+          },
+          "buildingAddress3": {
+            "type": "string",
+            "description": "Building address line 3.",
+            "example": ""
+          },
+          "buildingAddress4": {
+            "type": "string",
+            "description": "Building address line 4.",
+            "example": ""
+          },
+          "buildingCity": {
+            "type": "string",
+            "description": "Building city.",
+            "example": ""
+          },
+          "buildingState": {
+            "type": "string",
+            "description": "Building state.",
+            "example": ""
+          },
+          "buildingPostal": {
+            "type": "string",
+            "description": "Building postal code.",
+            "example": ""
+          },
+          "buildingCampus": {
+            "type": "string",
+            "description": "Building campus.",
+            "example": "TEMPE"
+          }
+        }
+      }
+    }
+  }
+}

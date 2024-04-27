@@ -1,0 +1,111 @@
+{
+  "get": {
+    "tags": ["Courses"],
+    "summary": "Get course details by term and optional filters (No pagination implemented)",
+    "description": "Returns details of all courses for a given term and optional filters like courseId, ownedByCollege, ownedByDepartment, include equivalentCourses.",
+    "parameters": [
+      {
+        "name": "strm",
+        "in": "path",
+        "required": true,
+        "description": "The term code.",
+        "schema": {
+          "type": "integer"
+        },
+        "example": 2247
+      },
+      {
+        "name": "courseId",
+        "in": "query",
+        "description": "The course ID.",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "example": 104171
+      },
+      {
+        "name": "ownedByCollege",
+        "in": "query",
+        "description": "The academic organization code of the college.",
+        "schema": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 10
+        },
+        "example": "CES"
+      },
+      {
+        "name": "ownedByDepartment",
+        "in": "query",
+        "description": "The academic organization code of the department.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "example": "CSE"
+      },
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like equivalent courses.",
+        "schema": {
+          "type": "string",
+          "enum": ["equivalentCourses"]
+        },
+        "example": "equivalentCourses"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/course.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Course not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for course not found.",
+                  "example": "Course not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

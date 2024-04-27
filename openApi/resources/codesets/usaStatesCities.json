@@ -1,0 +1,80 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get USA States and Cities",
+    "description": "Retrieve a list of USA states along with their cities based on the school type and state code.",
+    "parameters": [
+      {
+        "name": "schoolTypeCode",
+        "in": "query",
+        "description": "The type of school .",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["HS", "2YR", "4YR", "VOC", "COL", "UNV"]
+        },
+        "example": "4YR"
+      },
+      {
+        "name": "stateCode",
+        "in": "query",
+        "description": "The state code .",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "maxLength": 2
+        },
+        "example": "AL"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/stateCities.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "States and cities not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for states and cities not found.",
+                  "example": "States and cities not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

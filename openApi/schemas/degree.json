@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "degreeCode": {
+      "type": "string",
+      "description": "The code of the degree.",
+      "example": "A"
+    },
+    "descriptionShort": {
+      "type": "string",
+      "description": "A short description of the degree.",
+      "example": "A"
+    },
+    "descriptionLong": {
+      "type": "string",
+      "description": "A long description of the degree.",
+      "example": "Associate Degree"
+    },
+    "educationLevel": {
+      "type": "string",
+      "description": "The education level of the degree.",
+      "example": "10"
+    }
+  }
+}

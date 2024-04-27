@@ -1,0 +1,5 @@
+{
+  "type": "string",
+  "pattern": "^\\d{4}[147][A-Z]$",
+  "description": "The term code in the format YYYT, where YYY is the year (e.g., 2024 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall)."
+}

@@ -1,0 +1,66 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Specific Campus Code",
+    "description": "Retrieve  campus code along with their descriptions and location codes.",
+    "parameters": [
+      {
+        "name": "campusCode",
+        "in": "path",
+        "required": true,
+        "description": "The campus code.",
+        "schema": {
+          "type": "string",
+          "maxLength": 10
+        },
+        "example": "TUCSN"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/campus.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Codeset not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for codeset not found.",
+                  "example": "Codeset not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "get": {
+    "tags": ["Courses"],
+    "summary": "Get course details by CourseID, term and offer number",
+    "description": "Returns details of a specific course for a given term, courseId , courseOfferingNumber.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like equivalent courses.",
+        "schema": {
+          "type": "string",
+          "enum": ["equivalentCourses"]
+        },
+        "example": "equivalentCourses"
+      },
+      {
+        "name": "strm",
+        "in": "path",
+        "required": true,
+        "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+        "schema": {
+          "type": "string"
+        },
+        "example": "2247"
+      },
+      {
+        "name": "courseId",
+        "in": "path",
+        "required": true,
+        "description": "The course ID.",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "example": "104171"
+      },
+      {
+        "name": "courseOfferNumber",
+        "in": "path",
+        "required": true,
+        "description": "The course offer number.",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 2
+        },
+        "example": "1"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/course.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Course not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for course not found.",
+                  "example": "Course not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

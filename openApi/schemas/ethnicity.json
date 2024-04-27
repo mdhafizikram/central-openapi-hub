@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "ethnicCategoryCode": {
+      "type": "string",
+      "description": "The code for the ethnic category.",
+      "example": "1"
+    },
+    "ethnicCategoryDescription": {
+      "type": "string",
+      "description": "The description of the ethnic category.",
+      "example": "White"
+    },
+    "ethnicGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ethnicGroupCode": {
+            "type": "string",
+            "description": "The code for the ethnic group.",
+            "example": "W"
+          },
+          "ethnicGroupDescription": {
+            "type": "string",
+            "description": "The description of the ethnic group.",
+            "example": "White"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "studentGroupCode": {
+      "type": "string",
+      "description": "The code of the student group.",
+      "example": "00"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the student group.",
+      "example": "Tempe Summer Bridge-Cohort 14"
+    }
+  }
+}

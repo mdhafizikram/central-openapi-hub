@@ -1,0 +1,78 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Credit by Exam Equivalencies for a Test Component",
+    "description": "Retrieve credit by exam equivalencies for a specific test component.",
+    "parameters": [
+      {
+        "name": "testCode",
+        "in": "path",
+        "description": "Code for the test ",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 3
+        },
+        "example": "AP"
+      },
+
+      {
+        "name": "testComponentCode",
+        "in": "path",
+        "description": "Code for the test component",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 3
+        },
+        "example": "AH"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/creditByExam.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Credit by exam component not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for credit by exam component not found.",
+                  "example": "Credit by exam component not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

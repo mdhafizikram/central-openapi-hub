@@ -1,0 +1,69 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Degrees Information",
+    "description": "Retrieve information about degrees based on degree codes.",
+    "parameters": [
+      {
+        "name": "degreeCode",
+        "in": "query",
+        "description": "The degree code to filter degrees.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "maxLength": 1
+        },
+        "example": "A"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/degree.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Degrees not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for degrees not found.",
+                  "example": "Degrees not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

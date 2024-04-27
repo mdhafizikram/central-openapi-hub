@@ -1,0 +1,88 @@
+{
+  "get": {
+    "tags": ["Class"],
+    "summary": "Get class details by term and class number",
+    "description": "Returns details of a specific course for a given term, class number.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like instructor.",
+        "schema": {
+          "type": "string",
+          "enum": ["instructor"]
+        },
+        "example": "instructor"
+      },
+      {
+        "name": "strm",
+        "in": "path",
+        "required": true,
+        "description": "The term code in the format YYYT, where YYY is the year (e.g., 224 for the year 2024), T is the semester code (1 for spring, 4 for summer, 7 for fall).",
+        "schema": {
+          "type": "string"
+        },
+        "example": "2247"
+      },
+
+      {
+        "name": "classNumber",
+        "in": "path",
+        "required": true,
+        "description": "The class number.",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "example": "63151"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/class.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Course not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for course not found.",
+                  "example": "Course not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

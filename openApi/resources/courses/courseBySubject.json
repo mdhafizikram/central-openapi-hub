@@ -1,0 +1,110 @@
+{
+  "get": {
+    "tags": ["Courses"],
+    "summary": "Get courses by subject and catalog number range",
+    "description": "Returns courses for a subject within a specified catalog number range.",
+    "parameters": [
+      {
+        "name": "strm",
+        "in": "path",
+        "required": true,
+        "description": "The term code.",
+        "schema": {
+          "type": "integer"
+        },
+        "example": 2247
+      },
+      {
+        "name": "subject",
+        "in": "path",
+        "required": true,
+        "description": "The subject code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "CSE"
+      },
+      {
+        "name": "catalogNumberStart",
+        "in": "query",
+        "description": "Catalog number start (inclusive).",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 3
+        },
+        "example": 100
+      },
+      {
+        "name": "catalogNumberEnd",
+        "in": "query",
+        "description": "Catalog number end (inclusive).",
+        "schema": {
+          "type": "integer",
+          "minLength": 1,
+          "maxLength": 3
+        },
+        "example": 200
+      },
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like equivalent courses.",
+        "schema": {
+          "type": "string",
+          "enum": ["equivalentCourses"]
+        },
+        "example": "equivalentCourses"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/course.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Courses not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for courses not found.",
+                  "example": "Courses not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

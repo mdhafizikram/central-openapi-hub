@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "stateCode": {
+      "type": "string",
+      "description": "The state code of the state.",
+      "example": "AL"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the state.",
+      "example": "Alabama"
+    }
+  }
+}

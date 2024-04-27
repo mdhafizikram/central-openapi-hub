@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Ethnicities",
+    "description": "Retrieve a list of ethnicities along with their codes and descriptions.",
+
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/ethnicity.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Ethnicities not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for ethnicities not found.",
+                  "example": "Ethnicities not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

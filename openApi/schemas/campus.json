@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "campusCode": {
+      "type": "string",
+      "description": "The code representing the campus.",
+      "example": "TUCSN"
+    },
+    "description": {
+      "type": "string",
+      "description": "The full description of the campus.",
+      "example": "Tucson"
+    },
+    "descriptionShort": {
+      "type": "string",
+      "description": "A short description of the campus.",
+      "example": "Tucson"
+    },
+    "locationCode": {
+      "type": "string",
+      "description": "The location code of the campus.",
+      "example": "TUCSON"
+    }
+  }
+}

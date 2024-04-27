@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "acadOrgCode": {
+      "type": "string",
+      "description": "The academic organization code of the college.",
+      "example": "CAR"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the college.",
+      "example": "INACTIVE College of Design"
+    },
+    "alphaSortDescription": {
+      "type": "string",
+      "description": "The alpha-sorted description of the college.",
+      "example": "Design, College of"
+    },
+    "campus": {
+      "type": "string",
+      "description": "The campus where the college is located.",
+      "example": "TEMPE"
+    },
+    "collegeUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the college's website.",
+      "example": "http://www.asu.edu/caed/"
+    },
+    "fullDescription": {
+      "type": "string",
+      "description": "The full description of the college.",
+      "example": "Composed of a dynamic grouping of disciplines, the College of Design..."
+    },
+    "current": {
+      "type": "boolean",
+      "description": "Indicates whether the college is currently active or not.",
+      "example": false
+    },
+    "nonCredit": {
+      "type": "boolean",
+      "description": "Indicates whether the college offers non-credit programs.",
+      "example": false
+    }
+  }
+}

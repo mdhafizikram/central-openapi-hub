@@ -1,0 +1,88 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get Credit by Exam Details",
+    "description": "Retrieve credit by exam details for a specific test code, test component code, and test date.",
+    "parameters": [
+      {
+        "name": "testCode",
+        "in": "path",
+        "description": "The code for the test.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 3
+        },
+        "example": "AP"
+      },
+      {
+        "name": "testComponentCode",
+        "in": "path",
+        "description": "The code for the test component.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "maxLength": 3
+        },
+        "example": "AH"
+      },
+      {
+        "name": "testDate",
+        "in": "path",
+        "description": "The date of the test in yyyy-mm-dd format.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        },
+        "example": "2000-12-31"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/creditByExam.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Credit by exam detail not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for credit by exam detail not found.",
+                  "example": "Credit by exam detail not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

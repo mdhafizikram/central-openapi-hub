@@ -1,0 +1,68 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get College Information",
+    "description": "Retrieve information about colleges including their descriptions, URLs, and current status.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional data such as non-current colleges",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "nonCurrent"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/college.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Colleges not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for colleges not found.",
+                  "example": "Colleges not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
