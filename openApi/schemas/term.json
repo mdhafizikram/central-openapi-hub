@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "strm": {
+      "type": "string",
+      "description": "The term code.",
+      "example": "2001"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the term.",
+      "example": "Spring 2000"
+    },
+    "earliestTermBeginDate": {
+      "type": "integer",
+      "description": "Timestamp for the earliest term begin date.",
+      "example": 948092400000
+    },
+    "latestTermEndDate": {
+      "type": "integer",
+      "description": "Timestamp for the latest term end date.",
+      "example": 958028400000
+    },
+    "careerMap": {
+      "type": "object",
+      "description": "Map of careers for the term.",
+      "properties": {
+        "GRAD": {
+          "$ref": "career.json"
+        },
+        "LAW": {
+          "$ref": "career.json"
+        },
+        "UGRD": {
+          "$ref": "career.json"
+        }
+      }
+    }
+  }
+}

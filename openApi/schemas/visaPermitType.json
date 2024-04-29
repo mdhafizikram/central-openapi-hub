@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "visaPermitTypeCode": {
+      "type": "string",
+      "description": "The code for the visa or permit type.",
+      "example": "C3"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the visa or permit type.",
+      "example": "Frgn Gov Empl in Trans"
+    },
+    "visaPermitClassCode": {
+      "type": "string",
+      "description": "The code for the visa or permit class.",
+      "example": "V"
+    },
+    "visaPermitClassDescription": {
+      "type": "string",
+      "description": "The description of the visa or permit class.",
+      "example": "Visa"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "get": {
+    "tags": ["Academic-plan"],
+    "summary": "Get academic plans with filters",
+    "description": "Retrieves academic plans with optional filters for ownedByCollege, ownedByDepartment, acadPlanType, degreeType, include, and filter.",
+    "parameters": [
+      {
+        "name": "ownedByCollege",
+        "in": "query",
+        "description": "Filter by owning college academic organization.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "CHO"
+      },
+      {
+        "name": "ownedByDepartment",
+        "in": "query",
+        "description": "Filter by owning department academic organization.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "CHO"
+      },
+      {
+        "name": "acadPlanType",
+        "in": "query",
+        "description": "Filter by academic plan type code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "SPU"
+      },
+      {
+        "name": "degreeType",
+        "in": "query",
+        "description": "Filter by degree type (UG, UGCM, GR, OTHR).",
+        "schema": {
+          "type": "string"
+        },
+        "example": "UG"
+      },
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like detail, degreeDescriptionShort, etc.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "filter",
+        "in": "query",
+        "description": "Filter criteria for active plans.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/academicPlan.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Plans not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for plans not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

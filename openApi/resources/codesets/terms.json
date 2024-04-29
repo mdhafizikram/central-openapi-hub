@@ -1,0 +1,118 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get term details",
+    "description": "Returns details of terms based on specified parameters.",
+    "parameters": [
+      {
+        "name": "strm",
+        "in": "query",
+        "description": "The term code.",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "example": 2001
+      },
+      {
+        "name": "strmRange",
+        "in": "query",
+        "description": "The range of terms to include.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "strmBegin1-curr",
+            "strmBegin1-backwardsN",
+            "strmBegin1-forwardsN",
+            "curr-strmEnd1",
+            "curr-curr",
+            "curr-backwardsN",
+            "curr-forwardsN",
+            "backwardsN-strmEnd1",
+            "backwardsN-curr",
+            "backwardsN-backwardsN",
+            "backwardsN-forwardsN",
+            "forwardsN-strmEnd1",
+            "forwardsN-curr",
+            "forwardsN-backwardsN",
+            "forwardsN-forwardsN"
+          ]
+        },
+        "example": "backwardsN-now"
+      },
+      {
+        "name": "dateRange",
+        "in": "query",
+        "description": "The range of dates for term.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "startDate1 -endDate1 ",
+            "startDate1-backwardsN",
+            "startDate1-forwardsN",
+            "startDate1-now",
+            "backwardsN-endDate1",
+            "backwardsN-backwardsN",
+            "backwardsN-forwardsN",
+            "backwardsN-now",
+            "forwardsN-endDate1",
+            "forwardsN-backwardsN",
+            "forwardsN-forwardsN",
+            "forwardsN-now",
+            "now-endDate1",
+            "now-backwardsN",
+            "now-forwardsN",
+            "now-now"
+          ]
+        },
+        "example": "backwardsN-now"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/term.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Term not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for term not found.",
+                  "example": "Term not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "get": {
+    "tags": ["Academic-plan"],
+    "summary": "Get academic plan details by acadPlanCode",
+    "description": "Returns details of a specific academic plan by its code.",
+    "parameters": [
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include additional information like detail, * or specific field names.",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["detail", "*", "{fieldName}"]
+          }
+        }
+      },
+      {
+        "name": "acadPlanCode",
+        "in": "path",
+        "required": true,
+        "description": "The academic plan code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "9HOHONALL"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/academicPlan.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Academic plan not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for academic plan not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

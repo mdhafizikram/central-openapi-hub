@@ -1,0 +1,42 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "countryCode": {
+        "type": "string",
+        "example": "USA",
+        "description": "The country code for the country."
+      },
+      "countryCodeTwoChar": {
+        "type": "string",
+        "example": "US",
+        "description": "The two-character country code for the country."
+      },
+      "description": {
+        "type": "string",
+        "example": "United States",
+        "description": "The description of the country."
+      },
+      "states": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "stateCode": {
+              "type": "string",
+              "example": "AL",
+              "description": "The state code for the state."
+            },
+            "description": {
+              "type": "string",
+              "example": "Alabama",
+              "description": "The description of the state."
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "Response schema for country details including states."
+}

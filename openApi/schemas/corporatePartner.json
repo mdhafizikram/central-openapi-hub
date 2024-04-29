@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "corporatePartnerCode": {
+      "type": "string",
+      "description": "Code for the corporate partner.",
+      "example": "ABC"
+    },
+    "corporatePartnerDescription": {
+      "type": "string",
+      "description": "Description of the corporate partner.",
+      "example": "Action Behavior Centers"
+    }
+  }
+}
