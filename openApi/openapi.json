@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "title": "Data Potluck API's",
     "description": "Our API allows users to effortlessly explore a wide range of courses offered by various Colleges and Schools at Arizona State University. With intuitive endpoints and comprehensive filters, users can easily navigate through different academic programs, view course details, and access essential information, empowering them to make informed decisions about their educational journey at ASU.",
@@ -116,7 +116,7 @@
       "$ref": "./resources/codesets/term.json"
     },
     "/api/codeset/term/current": {
-      "$ref": "./resources/codesets/CurrentTerm.json"
+      "$ref": "./resources/codesets/currentTerm.json"
     },
     "/api/codeset/terms": {
       "$ref": "./resources/codesets/terms.json"
@@ -128,10 +128,10 @@
       "$ref": "./resources/codesets/visaPermitTypes.json"
     },
     "/api/codeset/acad-plans": {
-      "$ref": "./resources/acadplan/academicPlans.json"
+      "$ref": "./resources/acad-plan/acadPlans.json"
     },
     "/api/codeset/acad-plan/{acadPlanCode}": {
-      "$ref": "./resources/acadplan/academicPlan.json"
+      "$ref": "./resources/acad-plan/acadPlanByCode.json"
     }
   },
   "components": {

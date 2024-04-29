@@ -9,12 +9,10 @@
         "in": "query",
         "description": "Include additional information like detail, * or specific field names.",
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["detail", "*", "{fieldName}"]
-          }
-        }
+          "type": "string",
+          "enum": ["detail", "*"]
+        },
+        "example": "detail"
       },
       {
         "name": "acadPlanCode",
