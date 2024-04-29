@@ -10,7 +10,8 @@
         "description": "Filter by owning college academic organization.",
         "schema": {
           "type": "string"
-        }
+        },
+        "example": "CHO"
       },
       {
         "name": "ownedByDepartment",
@@ -18,7 +19,8 @@
         "description": "Filter by owning department academic organization.",
         "schema": {
           "type": "string"
-        }
+        },
+        "example": "CHO"
       },
       {
         "name": "acadPlanType",
@@ -26,7 +28,8 @@
         "description": "Filter by academic plan type code.",
         "schema": {
           "type": "string"
-        }
+        },
+        "example": "SPU"
       },
       {
         "name": "degreeType",
@@ -34,7 +37,8 @@
         "description": "Filter by degree type (UG, UGCM, GR, OTHR).",
         "schema": {
           "type": "string"
-        }
+        },
+        "example": "UG"
       },
       {
         "name": "include",
