@@ -57,21 +57,29 @@
       "type": "string",
       "description": "Math is required to complete this plan"
     },
-    "firstMathCourseRequired.courseId": {
-      "type": "string",
-      "description": "First required math course - course ID"
-    },
-    "firstMathCourseRequired.subject": {
-      "type": "string",
-      "description": "First required math course - subject"
-    },
-    "firstMathCourseRequired.catalogNumber": {
-      "type": "string",
-      "description": "First required math course - catalog number"
-    },
-    "firstMathCourseRequired.description": {
-      "type": "string",
-      "description": "First required math course"
+    "firstMathCourseRequired": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "courseId": {
+            "type": "string",
+            "description": "First required math course - course ID"
+          },
+          "subject": {
+            "type": "string",
+            "description": "First required math course - subject"
+          },
+          "catalogNumber": {
+            "type": "string",
+            "description": "First required math course - catalog number"
+          },
+          "description": {
+            "type": "string",
+            "description": "First required math course"
+          }
+        }
+      }
     },
     "firstMathCourseRequiredSupplementalText": {
       "type": "string",
@@ -190,22 +198,28 @@
         "type": "object",
         "properties": {
           "percentOwned": {
-            "type": "string"
+            "type": "string",
+            "description": "Percentage ownership for this department"
           },
           "departmentAcadOrg": {
-            "type": "string"
+            "type": "string",
+            "description": "Acad org code for department"
           },
           "departmentDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "Description of department"
           },
           "collegeAcadOrg": {
-            "type": "string"
+            "type": "string",
+            "description": "college level (org tree level 3) acad org code containing this department"
           },
           "collegeDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "Description of college"
           },
           "collegeUrl": {
-            "type": "string"
+            "type": "string",
+            "description": "URL for college"
           }
         }
       },
@@ -224,7 +238,8 @@
             "type": "string"
           },
           "session": {
-            "type": "string"
+            "type": "string",
+            "description": "Session code eg. REG, SESA, SESB"
           },
           "strm": {
             "type": "string"
@@ -257,35 +272,85 @@
         "type": "object",
         "properties": {
           "term": {
-            "type": "string"
+            "type": "string",
+            "description": "Term code: S = Spring, F = Fall, U = Summer"
           },
           "termDescription": {
-            "type": "string"
+            "type": "string",
+            "description": " description of term code"
           },
           "session": {
-            "type": "string"
+            "type": "string",
+            "description": "Session code: A (session A/C) or B "
           },
           "sessionDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "description of session code"
           },
           "modality": {
-            "type": "string"
+            "type": "string",
+            "description": "I (in-person) or O (online)"
           },
           "modalityDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "description of modality code"
           },
           "deadlineDate": {
-            "type": "string"
+            "type": "string",
+            "description": "deadline date for application in YYYY-MM-DD format"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Deadline type code:F (final) or P (priority)"
           },
           "typeDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "description of deadline type code"
           }
         }
       },
       "description": "Additional/alternate application deadline data for some GRAD plans - shows in degree search under headline of Application Deadlines For GRAD only (but not all GRAD)"
+    },
+    "majorMapGeneral": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "defaultFlag": {
+            "type": "string",
+            "description": "Term code: S = Spring, F = Fall, U = Summer"
+          },
+          "acadSubPlanCode": {
+            "type": "string"
+          },
+          "timePeriod": {
+            "type": "string"
+          },
+          "timePeriodDescription": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "example": "link to info about coursework (usually)"
+          },
+          "campus": {
+            "type": "string",
+            "description": "eg ALL or ONLNE.. note: not PS campus .. "
+          },
+          "categoryType": {
+            "type": "string",
+            "description": "category type of the record"
+          }
+        }
+      }
+    },
+    "majorMapSubplans": {
+      "type": "string",
+      "description": "LIST - Same fields as majorMapGeneral above, but with different grouping logic."
+    },
+    "majorMapOnline": {
+      "type": "string",
+      "description": "LIST - Same fields as majorMapGeneral above, but with different grouping logic."
     }
   }
 }
