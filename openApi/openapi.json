@@ -128,10 +128,10 @@
       "$ref": "./resources/codesets/visaPermitTypes.json"
     },
     "/api/codeset/acad-plans": {
-      "$ref": "./resources/codesets/academicPlans.json"
+      "$ref": "./resources/acadplan/academicPlans.json"
     },
     "/api/codeset/acad-plan/{acadPlanCode}": {
-      "$ref": "./resources/codesets/academicPlan.json"
+      "$ref": "./resources/acadplan/academicPlan.json"
     }
   },
   "components": {
