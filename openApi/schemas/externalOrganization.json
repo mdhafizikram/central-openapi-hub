@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "externalOrgId": {
+      "type": "string",
+      "description": "The ID of the external organization.",
+      "example": "1231332429"
+    },
+    "schoolTypeCode": {
+      "type": "string",
+      "description": "The school type code of the external organization.",
+      "example": "4YR"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the external organization.",
+      "example": "\"Bryansk St. Uni - after Academician I.G. Petrovsk"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "The country code of the external organization.",
+      "example": "RUS"
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "The state code of the external organization, if applicable.",
+      "example": null
+    },
+    "city": {
+      "type": "string",
+      "description": "The city where the external organization is located.",
+      "example": "Bryansk"
+    },
+    "atpCode": {
+      "type": "string",
+      "description": "The ATP code of the external organization, if available.",
+      "example": null
+    },
+    "ficeCode": {
+      "type": "string",
+      "description": "The FICE code of the external organization.",
+      "example": "RU0260"
+    }
+  }
+}

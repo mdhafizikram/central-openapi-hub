@@ -1,0 +1,65 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get country details by country code",
+    "description": "Returns details of a specific country based on the country code.",
+    "parameters": [
+      {
+        "name": "countryCode",
+        "in": "path",
+        "required": true,
+        "description": "The country code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "AFG"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/countries.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Country not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for country not found.",
+                  "example": "Country not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

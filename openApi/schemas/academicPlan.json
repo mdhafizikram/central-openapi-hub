@@ -1,0 +1,291 @@
+{
+  "type": "object",
+  "properties": {
+    "acadPlanDescription": {
+      "type": "string",
+      "description": "Brief description/title of this academic plan, sourced from best of 3 different data fields, in order of preference"
+    },
+    "acadPlanMarketingDescription": {
+      "type": "string",
+      "description": "Same as acadPlanDescription except with a different order of data field preference"
+    },
+    "acadPlanTranscriptDescription": {
+      "type": "string",
+      "description": "Brief description/title used for the transcript. Not populated for all plans."
+    },
+    "fullDescription": {
+      "type": "string",
+      "description": "Explanation (multiple sentences; paragraph format) of this academic plan. Contains HTML formatting."
+    },
+    "acadPlanType": {
+      "type": "string",
+      "description": "Academic plan type code"
+    },
+    "acadPlanTypeDescription": {
+      "type": "string",
+      "description": "Description of academic plan type"
+    },
+    "acadProgramCode": {
+      "type": "string",
+      "description": "Academic program code"
+    },
+    "emailAddr": {
+      "type": "string",
+      "description": "Contact email address for plan"
+    },
+    "emailAddrOnline": {
+      "type": "string",
+      "description": "Alternate contact email address for plan for ASU Online purposes"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "description": "Contact phone number for plan"
+    },
+    "languageRequired": {
+      "type": "string",
+      "description": "Indicates if second language coursework is required to complete this plan"
+    },
+    "mathIntensityCode": {
+      "type": "string",
+      "description": "Math Intensity Category (eg. General, Moderate, Substantial) - represents a measure of the number and academic rigor of math courses required for this plan"
+    },
+    "mathIntensityDescription": {
+      "type": "string",
+      "description": "Description of mathIntensityCode value"
+    },
+    "mathRequired": {
+      "type": "string",
+      "description": "Math is required to complete this plan"
+    },
+    "firstMathCourseRequired.courseId": {
+      "type": "string",
+      "description": "First required math course - course ID"
+    },
+    "firstMathCourseRequired.subject": {
+      "type": "string",
+      "description": "First required math course - subject"
+    },
+    "firstMathCourseRequired.catalogNumber": {
+      "type": "string",
+      "description": "First required math course - catalog number"
+    },
+    "firstMathCourseRequired.description": {
+      "type": "string",
+      "description": "First required math course"
+    },
+    "firstMathCourseRequiredSupplementalText": {
+      "type": "string",
+      "description": "First required math course - supplemental text (includes HTML formatting)"
+    },
+    "additionalFee": {
+      "type": "string",
+      "description": "This plan has an additional fee"
+    },
+    "careerOpportunities": {
+      "type": "string",
+      "description": "Career opportunity information. Contains HTML formatting."
+    },
+    "professionalLicensureStandardText": {
+      "type": "string",
+      "description": "Professional licensure standard text (includes HTML formatting. Warning: malformed HTML)"
+    },
+    "professionalLicensureAdditionalText": {
+      "type": "string",
+      "description": "Professional licensure additional text (includes HTML formatting)"
+    },
+    "marketingText": {
+      "type": "string",
+      "description": "Supplemental marketing blurb / sales pitch - used to manipulate SEO. (Includes HTML formatting)"
+    },
+    "globalExperienceText": {
+      "type": "string",
+      "description": "Supplemental text for global perspective of plan (Includes HTML formatting)"
+    },
+    "globalDegreeText": {
+      "type": "string",
+      "description": "Supplemental text for global degree applicability of plan (Includes HTML formatting)"
+    },
+    "admissionRequirementsText": {
+      "type": "string",
+      "description": "Admission requirements text (Includes HTML formatting)"
+    },
+    "transferAdmissionRequirementsText": {
+      "type": "string",
+      "description": "Transfer admission requirements text (Includes HTML formatting)"
+    },
+    "activeInDegreeSearch": {
+      "type": "string",
+      "description": "Indicates if this plan should be displayed in degree search"
+    },
+    "applicantsMustChooseSecondMajor": {
+      "type": "string",
+      "description": "Indicates if an applicant needs to select a second major (this major has higher-level requirements)"
+    },
+    "campusesOffered": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "campusCode": {
+            "type": "string"
+          },
+          "wue": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of campuses where this plan is offered for instruction"
+    },
+    "degreeDescriptionShort": {
+      "type": "string",
+      "description": "Short degree description (eg. BS)"
+    },
+    "degreeDescriptionLong": {
+      "type": "string",
+      "description": "Long degree description (eg. Bachelor of Science)"
+    },
+    "degreeDescriptionText": {
+      "type": "string",
+      "description": "Text information describing the degree (eg. An undergraduate degree that advances the understanding of...)"
+    },
+    "degreeEducationLevel": {
+      "type": "string",
+      "description": "Education level code associated with this degree."
+    },
+    "planKeywords": {
+      "type": "string",
+      "description": "Set of search keywords for this plan"
+    },
+    "videoUrl": {
+      "type": "string",
+      "description": "URL of marketing video for plan"
+    },
+    "academicOfficeLocation": {
+      "type": "string",
+      "description": "Academic office location"
+    },
+    "academicOfficeUrl": {
+      "type": "string",
+      "description": "Academic office URL"
+    },
+    "customText": {
+      "type": "string",
+      "description": "Supplemental optional text that displays in degree search near the top; typically used to note plans that are active but no longer accepting applications or new students. Note: sometimes contains (occasionally malformed) HTML"
+    },
+    "degreeRequirements": {
+      "type": "string",
+      "description": "Text describing degree requirements for graduate degrees. Note: includes HTML formatting"
+    },
+    "minorCourseRequirements": {
+      "type": "string",
+      "description": "Text describing course requirements for minors. Warn: includes HTML formatting w/ css classes."
+    },
+    "graduateDegreeAdditionalRequirements": {
+      "type": "string",
+      "description": "Set of degree requirements for grad plans from academic advising requirement tables."
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "percentOwned": {
+            "type": "string"
+          },
+          "departmentAcadOrg": {
+            "type": "string"
+          },
+          "departmentDescription": {
+            "type": "string"
+          },
+          "collegeAcadOrg": {
+            "type": "string"
+          },
+          "collegeDescription": {
+            "type": "string"
+          },
+          "collegeUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "List of department owner(s) for plan"
+    },
+    "degreeType": {
+      "type": "string",
+      "description": "Categorization of plan by degree type: UG = Undergraduate degrees UGCM = Non-graduate/non-law certificates (incl. standalone certificates) and minors GR = Graduate and Law OTHR = Other; plans that don't meet criteria for above"
+    },
+    "applicationDeadlines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "campus": {
+            "type": "string"
+          },
+          "session": {
+            "type": "string"
+          },
+          "strm": {
+            "type": "string"
+          },
+          "strmDescription": {
+            "type": "string"
+          },
+          "applicationAcceptStartDate": {
+            "type": "string"
+          },
+          "applicationAcceptEndDate": {
+            "type": "string"
+          },
+          "sessionEndDate": {
+            "type": "string"
+          },
+          "priorityApplicationDeadlineDate": {
+            "type": "string"
+          },
+          "termBeginDate": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Application deadlines for the plan, per campus/session/term/admitType"
+    },
+    "additionalDeadlines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "termDescription": {
+            "type": "string"
+          },
+          "session": {
+            "type": "string"
+          },
+          "sessionDescription": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "modalityDescription": {
+            "type": "string"
+          },
+          "deadlineDate": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "typeDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Additional/alternate application deadline data for some GRAD plans - shows in degree search under headline of Application Deadlines For GRAD only (but not all GRAD)"
+    }
+  }
+}

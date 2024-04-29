@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "acadOrgCode": {
+      "type": "string",
+      "description": "The academic organization code of the college.",
+      "example": "CAS"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the college.",
+      "example": "New College of Interdisciplinary Arts and Sciences"
+    },
+    "alphaSortDescription": {
+      "type": "string",
+      "description": "Alpha sorted description of the college.",
+      "example": "Interdisciplinary Arts and Sciences, New College of"
+    },
+    "campus": {
+      "type": "string",
+      "description": "Campus where the college is located.",
+      "example": "WEST"
+    },
+    "collegeUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the college's website.",
+      "example": "https://newcollege.asu.edu/"
+    },
+    "fullDescription": {
+      "type": "string",
+      "description": "Full description of the college.",
+      "example": "The New College of Interdisciplinary Arts and Sciences prepares you to take your place in dynamic social, political and natural environments. Offering a wide range of interdisciplinary and disciplinary programs in the arts, humanities, social sciences and natural sciences, New College provides you with an education that satisfies your diverse intellectual and creative interests and equips you with the skills and knowledge necessary to succeed in a competitive and rapidly-changing job market. Whether your career plans are well-defined or undecided, there's a New College program that fits your needs."
+    },
+    "current": {
+      "type": "boolean",
+      "description": "Indicates if the college is current or not.",
+      "example": true
+    },
+    "nonCredit": {
+      "type": "boolean",
+      "description": "Indicates if the college offers non-credit programs or not.",
+      "example": false
+    }
+  }
+}

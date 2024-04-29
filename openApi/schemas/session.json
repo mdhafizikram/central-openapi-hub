@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "sessionCode": {
+      "type": "string",
+      "description": "The session code.",
+      "example": "REG"
+    },
+    "sessionBeginDate": {
+      "type": "integer",
+      "description": "Timestamp for the session begin date.",
+      "example": 948092400000
+    },
+    "sessionEndDate": {
+      "type": "integer",
+      "description": "Timestamp for the session end date.",
+      "example": 958028400000
+    },
+    "openEnrollmentDate": {
+      "type": "integer",
+      "description": "Timestamp for the open enrollment date.",
+      "example": 942649200000
+    },
+    "firstEnrollmentDate": {
+      "type": "integer",
+      "description": "Timestamp for the first enrollment date.",
+      "example": null
+    },
+    "lastEnrollmentDate": {
+      "type": "integer",
+      "description": "Timestamp for the last enrollment date.",
+      "example": null
+    },
+    "dropDeadlineDate": {
+      "type": "integer",
+      "description": "Timestamp for the drop deadline date.",
+      "example": 948610800000
+    },
+    "withdrawalDeadlineDate": {
+      "type": "integer",
+      "description": "Timestamp for the withdrawal deadline date.",
+      "example": 954486000000
+    },
+    "completeSessionWithdrawalDeadlineDate": {
+      "type": "integer",
+      "description": "Timestamp for the complete session withdrawal deadline date.",
+      "example": 957250800000
+    }
+  }
+}

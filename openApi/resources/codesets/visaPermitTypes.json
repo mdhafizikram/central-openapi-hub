@@ -1,0 +1,67 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get visa and permit types",
+    "description": "Returns a list of visa and permit types based on the provided filter.",
+    "parameters": [
+      {
+        "name": "filter",
+        "in": "query",
+        "description": "Filter to include only undergraduate admissions allowed types.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "onlyUndergraduateAdmissionsAllowedTypes"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/visaPermitType.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for resource not found.",
+                  "example": "Resource not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

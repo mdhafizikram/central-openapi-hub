@@ -82,8 +82,14 @@
     "/api/codeset/colleges": {
       "$ref": "./resources/codesets/colleges.json"
     },
+    "/api/codeset/college/{acadOrgCode}": {
+      "$ref": "./resources/codesets/college.json"
+    },
     "/api/codeset/countries": {
       "$ref": "./resources/codesets/countries.json"
+    },
+    "/api/codeset/country/{countryCode}": {
+      "$ref": "./resources/codesets/country.json"
     },
     "/api/codeset/ethnicities": {
       "$ref": "./resources/codesets/ethnicities.json"
@@ -94,6 +100,9 @@
     "/api/codeset/external-organizations/usa-states-cities": {
       "$ref": "./resources/codesets/usaStatesCities.json"
     },
+    "/api/codeset/external-organization/{externalOrgId}": {
+      "$ref": "./resources/codesets/externalOrganization.json"
+    },
     "/api/codeset/onet-career-data": {
       "$ref": "./resources/codesets/onetCareerData.json"
     },
@@ -102,9 +111,29 @@
     },
     "/api/codeset/student-groups": {
       "$ref": "./resources/codesets/studentGroups.json"
+    },
+    "/api/codeset/term/{strm}": {
+      "$ref": "./resources/codesets/term.json"
+    },
+    "/api/codeset/term/current": {
+      "$ref": "./resources/codesets/CurrentTerm.json"
+    },
+    "/api/codeset/terms": {
+      "$ref": "./resources/codesets/terms.json"
+    },
+    "/api/codeset/undergraduate-admissions-corporate-partners": {
+      "$ref": "./resources/codesets/corporatePartners.json"
+    },
+    "/api/codeset/visa-permit-types": {
+      "$ref": "./resources/codesets/visaPermitTypes.json"
+    },
+    "/api/codeset/acad-plans": {
+      "$ref": "./resources/codesets/academicPlans.json"
+    },
+    "/api/codeset/acad-plan/{acadPlanCode}": {
+      "$ref": "./resources/codesets/academicPlan.json"
     }
   },
-
   "components": {
     "schemas": {
       "StrmParam": {
@@ -125,14 +154,20 @@
       "College": {
         "$ref": "./schemas/college.json"
       },
+      "CollegeDetails": {
+        "$ref": "./schemas/collegeDetails.json"
+      },
       "Country": {
         "$ref": "./schemas/country.json"
+      },
+      "Countries": {
+        "$ref": "./schemas/countries.json"
       },
       "State": {
         "$ref": "./schemas/state.json"
       },
       "Ethnicity": {
-        "$ref": "./schemas/ehnicity.json"
+        "$ref": "./schemas/ethnicity.json"
       },
       "Degree": {
         "$ref": "./schemas/degree.json"
@@ -140,11 +175,26 @@
       "StateCities": {
         "$ref": "./schemas/stateCities.json"
       },
+      "ExternalOrganization": {
+        "$ref": "./schemas/externalOrganization.json"
+      },
       "ONETCareerData": {
         "$ref": "./schemas/onetCareerData.json"
       },
       "StudentGroup": {
         "$ref": "./schemas/studentGroup.json"
+      },
+      "Term": {
+        "$ref": "./schemas/term.json"
+      },
+      "CorporatePartner": {
+        "$ref": "./schemas/corporatePartner.json"
+      },
+      "VisaPermitType": {
+        "$ref": "./schemas/visaPermitType.json"
+      },
+      "AcademicPlan": {
+        "$ref": "./schemas/academicPlan.json"
       }
     }
   }

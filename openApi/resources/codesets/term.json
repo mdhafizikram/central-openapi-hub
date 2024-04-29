@@ -1,0 +1,65 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get term details by term code",
+    "description": "Returns details of a specific term for a given term code.",
+    "parameters": [
+      {
+        "name": "strm",
+        "in": "path",
+        "required": true,
+        "description": "The term code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "2001"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/term.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Term not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for term not found.",
+                  "example": "Term not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

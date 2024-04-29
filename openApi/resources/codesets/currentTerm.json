@@ -1,0 +1,92 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get current term details",
+    "description": "Returns details of the current term based on the provided parameters.",
+    "parameters": [
+      {
+        "name": "asOf",
+        "in": "query",
+        "description": "Timestamp (epoch millis) for as of date.",
+        "schema": {
+          "type": "integer"
+        },
+        "example": 1714978800000
+      },
+      {
+        "name": "asOfDate",
+        "in": "query",
+        "description": "Date in the format yyyymmdd for as of date.",
+        "schema": {
+          "type": "integer",
+          "format": "date"
+        },
+        "example": 1704697200000
+      },
+      {
+        "name": "lookBackwardsBetweenTerms",
+        "in": "query",
+        "description": "Include terms between the current and as of date.",
+        "schema": {
+          "type": "boolean"
+        },
+        "example": true
+      },
+      {
+        "name": "acadCareer",
+        "in": "query",
+        "description": "Academic career code.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "UGRD"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/term.json"
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Term not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for term not found.",
+                  "example": "Term not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

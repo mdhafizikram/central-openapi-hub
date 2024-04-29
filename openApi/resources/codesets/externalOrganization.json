@@ -1,0 +1,68 @@
+{
+  "get": {
+    "tags": ["Codeset"],
+    "summary": "Get external organization details by ID",
+    "description": "Returns details of an external organization by its ID.",
+    "parameters": [
+      {
+        "name": "externalOrgId",
+        "in": "path",
+        "required": true,
+        "description": "The ID of the external organization.",
+        "schema": {
+          "type": "string"
+        },
+        "example": "1231332429"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../../schemas/externalOrganization.json"
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "External organization not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for external organization not found.",
+                  "example": "External organization not found."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
