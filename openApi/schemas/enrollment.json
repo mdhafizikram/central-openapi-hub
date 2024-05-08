@@ -1,0 +1,253 @@
+{
+  "type": "object",
+  "properties": {
+    "enrollments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "emplid": {
+            "type": "string",
+            "description": "Employee ID.",
+            "example": "1000123456"
+          },
+          "strm": {
+            "type": "string",
+            "description": "Term code.",
+            "example": "2231"
+          },
+          "classNumber": {
+            "type": "string",
+            "description": "Class number.",
+            "example": "12345"
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Timestamp of the enrollment information.",
+            "example": 1667939535661
+          },
+          "primaryAsuriteid": {
+            "type": "string",
+            "description": "Primary Asurite ID.",
+            "example": "ssundevil"
+          },
+          "courseId": {
+            "type": "string",
+            "description": "Course ID.",
+            "example": "103769"
+          },
+          "courseOfferNumber": {
+            "type": "string",
+            "description": "Course offer number.",
+            "example": "1"
+          },
+          "sessionCode": {
+            "type": "string",
+            "description": "Session code.",
+            "example": "C"
+          },
+          "classSection": {
+            "type": "string",
+            "description": "Class section.",
+            "example": "1001"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Subject of the course.",
+            "example": "CHM"
+          },
+          "catalogNumber": {
+            "type": "string",
+            "description": "Catalog number of the course.",
+            "example": "116"
+          },
+          "acadCareer": {
+            "type": "string",
+            "description": "Academic career.",
+            "example": "UGRD"
+          },
+          "acadCareerDescription": {
+            "type": "string",
+            "description": "Description of academic career.",
+            "example": "Undergraduate"
+          },
+          "enrollmentStatus": {
+            "type": "string",
+            "description": "Enrollment status.",
+            "example": "E"
+          },
+          "enrollmentStatusReason": {
+            "type": "string",
+            "description": "Reason for enrollment status.",
+            "example": "ENRL"
+          },
+          "unitsTaken": {
+            "type": "number",
+            "description": "Units taken.",
+            "example": 4.0
+          },
+          "auditGradingBasis": {
+            "type": "boolean",
+            "description": "Indicates if audit grading basis is used.",
+            "example": false
+          },
+          "enrollmentDropDate": {
+            "type": ["string", "null"],
+            "description": "Enrollment drop date.",
+            "example": null
+          },
+          "officialGrade": {
+            "type": ["string", "null"],
+            "description": "Official grade received.",
+            "example": null
+          },
+          "gradePoints": {
+            "type": "number",
+            "description": "Grade points.",
+            "example": 0.0
+          },
+          "gradingBasis": {
+            "type": "string",
+            "description": "Grading basis.",
+            "example": "GNA"
+          },
+          "gradingBasisDescription": {
+            "type": "string",
+            "description": "Description of grading basis.",
+            "example": "Standard Grading"
+          },
+          "instructorChoiceEmplid": {
+            "type": ["string", "null"],
+            "description": "Employee ID of the instructor's choice.",
+            "example": null
+          },
+          "promodCohortCode": {
+            "type": ["string", "null"],
+            "description": "Promod cohort code.",
+            "example": null
+          },
+          "dropDeadlineDate": {
+            "type": "integer",
+            "description": "Drop deadline date.",
+            "example": 1673766000000
+          },
+          "withdrawalDeadlineDate": {
+            "type": "integer",
+            "description": "Withdrawal deadline date.",
+            "example": 1680418800000
+          },
+          "completeSessionWithdrawalDeadlineDate": {
+            "type": "integer",
+            "description": "Complete session withdrawal deadline date.",
+            "example": 1682665200000
+          },
+          "studentDetail": {
+            "type": "object",
+            "properties": {
+              "emplid": {
+                "type": "string",
+                "description": "Employee ID of the student.",
+                "example": "1000123456"
+              },
+              "timestamp": {
+                "type": "integer",
+                "description": "Timestamp of the student information.",
+                "example": 1631223050584
+              },
+              "primaryAsuriteid": {
+                "type": "string",
+                "description": "Primary Asurite ID of the student.",
+                "example": "ssundevil"
+              },
+              "campusId": {
+                "type": "string",
+                "description": "Campus ID of the student.",
+                "example": "993123456"
+              },
+              "names": {
+                "type": "object",
+                "properties": {
+                  "PRF": {
+                    "type": "object",
+                    "properties": {
+                      "nameType": {
+                        "type": "string",
+                        "description": "Type of name.",
+                        "example": "PRF"
+                      },
+                      "givenName": {
+                        "type": "string",
+                        "description": "Given name.",
+                        "example": "Sparky"
+                      },
+                      "middleName": {
+                        "type": "string",
+                        "description": "Middle name.",
+                        "example": "TheMascot"
+                      },
+                      "familyName": {
+                        "type": "string",
+                        "description": "Family name.",
+                        "example": "Sundevil"
+                      },
+                      "namePrefix": {
+                        "type": ["string", "null"],
+                        "description": "Prefix of the name.",
+                        "example": null
+                      },
+                      "nameSuffix": {
+                        "type": ["string", "null"],
+                        "description": "Suffix of the name.",
+                        "example": null
+                      }
+                    }
+                  },
+                  "PRI": {
+                    "type": "object",
+                    "properties": {
+                      "nameType": {
+                        "type": "string",
+                        "description": "Type of name.",
+                        "example": "PRI"
+                      },
+                      "givenName": {
+                        "type": "string",
+                        "description": "Given name.",
+                        "example": "Sparkler"
+                      },
+                      "middleName": {
+                        "type": "string",
+                        "description": "Middle name.",
+                        "example": "TheMascot"
+                      },
+                      "familyName": {
+                        "type": "string",
+                        "description": "Family name.",
+                        "example": "Sundevil"
+                      },
+                      "namePrefix": {
+                        "type": ["string", "null"],
+                        "description": "Prefix of the name.",
+                        "example": null
+                      },
+                      "nameSuffix": {
+                        "type": ["string", "null"],
+                        "description": "Suffix of the name.",
+                        "example": null
+                      }
+                    }
+                  }
+                }
+              },
+              "gender": {
+                "type": "string",
+                "description": "Gender of the student.",
+                "example": "M"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

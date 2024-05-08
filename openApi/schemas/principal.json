@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "properties": {
+    "realm": {
+      "type": "string",
+      "description": "Realm of the identity.",
+      "example": "asuriteid"
+    },
+    "principal": {
+      "type": "string",
+      "description": "Principal of the identity.",
+      "example": "myasuplat_dpl_app"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Timestamp of the identity information.",
+      "example": 1586898532955
+    },
+    "principalType": {
+      "type": "string",
+      "description": "Type of the principal.",
+      "example": "application"
+    },
+    "uid": {
+      "type": "string",
+      "description": "User ID.",
+      "example": "1976075"
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Indicates if the identity is active or not.",
+          "example": true
+        }
+      }
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "emplid": {
+          "type": "string",
+          "description": "Employee ID of the owner.",
+          "example": "1000422805"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Timestamp of the owner information.",
+          "example": 1563886008851
+        },
+        "primaryAsuriteid": {
+          "type": "string",
+          "description": "Primary Asurite ID of the owner.",
+          "example": "jsharper"
+        },
+        "campusId": {
+          "type": "string",
+          "description": "Campus ID of the owner.",
+          "example": "993904776"
+        },
+        "names": {
+          "type": "object",
+          "properties": {
+            "PRI": {
+              "type": "object",
+              "properties": {
+                "nameType": {
+                  "type": "string",
+                  "description": "Type of name.",
+                  "example": "PRI"
+                },
+                "givenName": {
+                  "type": "string",
+                  "description": "Given name of the owner.",
+                  "example": "Jason"
+                },
+                "middleName": {
+                  "type": "string",
+                  "description": "Middle name of the owner.",
+                  "example": "Scott"
+                },
+                "familyName": {
+                  "type": "string",
+                  "description": "Family name of the owner.",
+                  "example": "Harper"
+                },
+                "namePrefix": {
+                  "type": "string",
+                  "description": "Prefix of the name.",
+                  "example": null
+                },
+                "nameSuffix": {
+                  "type": "string",
+                  "description": "Suffix of the name.",
+                  "example": null
+                }
+              }
+            }
+          }
+        },
+        "gender": {
+          "type": "string",
+          "description": "Gender of the owner.",
+          "example": "M"
+        }
+      }
+    },
+    "sponsors": {
+      "type": "array",
+      "description": "List of sponsors.",
+      "example": []
+    },
+    "electronicIdentityKey": {
+      "type": "string",
+      "description": "Electronic identity key.",
+      "example": "3694200"
+    }
+  }
+}

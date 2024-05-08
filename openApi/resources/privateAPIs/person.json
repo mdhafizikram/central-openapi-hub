@@ -1,0 +1,82 @@
+{
+  "get": {
+    "tags": ["Private-APIs"],
+    "summary": "Get details about an asu identity.",
+    "description": "Returns the details about an asu identity.",
+    "parameters": [
+      {
+        "name": "emplid",
+        "in": "path",
+        "description": "The employe id of the asu identity",
+        "schema": {
+          "type": "string"
+        },
+        "example": "1000422805"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../../schemas/person.json"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for unauthorized access.",
+                  "example": "Unauthorized access. Please authenticate to access this resource."
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "subscription not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for course not found.",
+                  "example": "Asu identity not found."
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "Error message for internal server error.",
+                  "example": "Internal server error."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

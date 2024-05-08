@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "emplid": {
+        "type": "string",
+        "description": "Employee ID.",
+        "example": "1000422805"
+      },
+      "timestamp": {
+        "type": "integer",
+        "description": "Timestamp of the information.",
+        "example": 1563886008851
+      },
+      "primaryAsuriteid": {
+        "type": "string",
+        "description": "Primary Asurite ID.",
+        "example": "jsharper"
+      },
+      "campusId": {
+        "type": "string",
+        "description": "Campus ID.",
+        "example": "993904776"
+      },
+      "sevisId": {
+        "type": ["string", "null"],
+        "description": "SEVIS ID.",
+        "example": null
+      },
+      "names": {
+        "type": "object",
+        "properties": {
+          "PRI": {
+            "type": "object",
+            "properties": {
+              "nameType": {
+                "type": "string",
+                "description": "Type of name.",
+                "example": "PRI"
+              },
+              "givenName": {
+                "type": "string",
+                "description": "Given name.",
+                "example": "Jason"
+              },
+              "middleName": {
+                "type": "string",
+                "description": "Middle name.",
+                "example": "Scott"
+              },
+              "familyName": {
+                "type": "string",
+                "description": "Family name.",
+                "example": "Harper"
+              },
+              "namePrefix": {
+                "type": ["string", "null"],
+                "description": "Prefix of the name.",
+                "example": null
+              },
+              "nameSuffix": {
+                "type": ["string", "null"],
+                "description": "Suffix of the name.",
+                "example": null
+              }
+            }
+          }
+        }
+      },
+      "gender": {
+        "type": "string",
+        "description": "Gender.",
+        "example": "M"
+      }
+    }
+  }
+}

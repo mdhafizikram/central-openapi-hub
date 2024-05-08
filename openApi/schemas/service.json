@@ -1,0 +1,58 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "serviceKey": {
+        "type": "integer",
+        "description": "Unique identifier for the service.",
+        "example": 10022
+      },
+      "timestamp": {
+        "type": "integer",
+        "description": "Timestamp when the service information was updated.",
+        "example": 1648585426105
+      },
+      "serviceDescription": {
+        "type": "string",
+        "description": "Description of the service.",
+        "example": "ASU Google Workspace for Education"
+      },
+      "servicePath": {
+        "type": "string",
+        "description": "Path of the service.",
+        "example": "GMAIL"
+      },
+      "status": {
+        "type": "string",
+        "description": "Status of the service ('A' for active, 'I' for inactive).",
+        "example": "A"
+      },
+      "statusDescr": {
+        "type": "string",
+        "description": "Description of the service status.",
+        "example": "Active"
+      },
+      "serviceType": {
+        "type": "integer",
+        "description": "Type of service.",
+        "example": 38
+      },
+      "serviceTypeDescr": {
+        "type": "string",
+        "description": "Description of the service type.",
+        "example": "Google Mail"
+      },
+      "serviceCategory": {
+        "type": "integer",
+        "description": "Category of the service.",
+        "example": 0
+      },
+      "serviceCategoryDescr": {
+        "type": "string",
+        "description": "Description of the service category.",
+        "example": "Basic Services"
+      }
+    }
+  }
+}

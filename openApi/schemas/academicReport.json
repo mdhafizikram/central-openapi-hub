@@ -1,0 +1,94 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "emplid": {
+        "type": "string",
+        "description": "Employee ID.",
+        "example": "2000012345"
+      },
+      "strm": {
+        "type": "string",
+        "description": "Term code.",
+        "example": "2241"
+      },
+      "classNumber": {
+        "type": "string",
+        "description": "Class number.",
+        "example": "12346"
+      },
+      "acadCareer": {
+        "type": "string",
+        "description": "Academic career.",
+        "example": "UGRD"
+      },
+      "asrPeriodCode": {
+        "type": "string",
+        "description": "ASR period code.",
+        "example": "4"
+      },
+      "timestamp": {
+        "type": "integer",
+        "description": "Timestamp of the information.",
+        "example": 1714078287000
+      },
+      "asrPeriodDescription": {
+        "type": "string",
+        "description": "ASR period description.",
+        "example": "Session C - January 29 - February 4, 2024"
+      },
+      "grade": {
+        "type": "string",
+        "description": "Grade received.",
+        "example": "U"
+      },
+      "gradeDescription": {
+        "type": "string",
+        "description": "Description of the grade.",
+        "example": "Unsatisfactory"
+      },
+      "commentText": {
+        "type": ["string", "null"],
+        "description": "Comment text.",
+        "example": null
+      },
+      "actions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "gradeActionCode": {
+              "type": "string",
+              "description": "Grade action code.",
+              "example": "04"
+            },
+            "gradeActionDescription": {
+              "type": "string",
+              "description": "Description of the grade action.",
+              "example": "Complete assignments"
+            }
+          }
+        }
+      },
+      "reasons": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "gradeReasonCode": {
+              "type": "string",
+              "description": "Grade reason code.",
+              "example": "03"
+            },
+            "gradeReasonDescription": {
+              "type": "string",
+              "description": "Description of the grade reason.",
+              "example": "Missed assignments/assessments"
+            }
+          }
+        }
+      }
+    }
+  }
+}
