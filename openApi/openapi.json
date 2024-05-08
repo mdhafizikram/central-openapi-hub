@@ -10,7 +10,14 @@
   },
   "servers": [
     {
-      "url": "https://api.myasuplat-dpl.asu.edu"
+      "url": "https://{environment}.myasuplat-dpl.asu.edu",
+      "variables": {
+        "environment": {
+          "default": "api",
+          "description": "Environment to use for the API calls",
+          "enum": ["api", "mock"]
+        }
+      }
     }
   ],
   "tags": [
