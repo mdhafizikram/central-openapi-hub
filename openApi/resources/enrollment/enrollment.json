@@ -1,28 +1,39 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
+    "tags": ["Enrollment"],
     "summary": "Get details about a principal.",
     "description": "Returns the details about the principle along with owner details.",
     "parameters": [
       {
-        "name": "asuriteid",
+        "name": "strm",
         "in": "path",
-        "description": "The asuriteid of the principal",
+        "required": true,
+        "description": "The term code.",
         "schema": {
           "type": "string"
         },
-        "example": "myasuplat_dpl_app"
+        "example": "2231"
+      },
+      {
+        "name": "classNumber",
+        "in": "path",
+        "required": true,
+        "description": "The  class number",
+        "schema": {
+          "type": "string"
+        },
+        "example": "12345"
       },
 
       {
         "name": "include",
         "in": "query",
-        "description": "Include the principal owner detail",
+        "description": "Include the student detail",
 
         "schema": {
           "type": "string"
         },
-        "example": "ownerDetail"
+        "example": "studentDetail"
       }
     ],
     "responses": {
@@ -31,7 +42,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/principal.json"
+              "$ref": "../../schemas/enrollment.json"
             }
           }
         }
@@ -63,7 +74,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "principal not found."
+                  "example": "enrollment not found."
                 }
               }
             }

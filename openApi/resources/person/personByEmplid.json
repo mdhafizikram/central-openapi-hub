@@ -1,28 +1,17 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
-    "summary": "Get service subscriptions for asurite namespace principals",
-    "description": "Returns service subscriptions (from EDNA) for asurite namespace principals by  quering  asuriteid, servicePath, or serviceKey.",
+    "tags": ["Person"],
+    "summary": "Get details about an asu identity.",
+    "description": "Returns the details about an asu identity.",
     "parameters": [
       {
-        "name": "asuriteid",
-        "in": "path",
-        "description": "The asuriteid of the subscription",
-        "schema": {
-          "type": "string"
-        },
-        "example": "ssundevil"
-      },
-
-      {
-        "name": "filter",
+        "name": "emplid",
         "in": "query",
-        "description": "Filter to include only the active subscription",
-        "required": true,
+        "description": "The employe id of the asu identity",
         "schema": {
           "type": "string"
         },
-        "example": "active"
+        "example": "1000422805"
       }
     ],
     "responses": {
@@ -31,7 +20,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/service.json"
+              "$ref": "../../schemas/person.json"
             }
           }
         }
@@ -63,7 +52,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "subscription not found."
+                  "example": "Asu identities not found."
                 }
               }
             }

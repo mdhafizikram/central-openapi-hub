@@ -1,18 +1,18 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
-    "summary": "Get academic Status Reports for a given student.",
-    "description": "Returns the details Academic Status Reports for a given student.",
+    "tags": ["Jobs"],
+    "summary": "Get HR job data by emplid.",
+    "description": "Returns the HR job data.",
     "parameters": [
       {
         "name": "emplid",
         "in": "path",
         "required": true,
-        "description": "The employe id.",
+        "description": "The employe id of the asu identity",
         "schema": {
           "type": "string"
         },
-        "example": "2000012345"
+        "example": "1000422805"
       }
     ],
     "responses": {
@@ -21,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/academicReport.json"
+              "$ref": "../../schemas/person.json"
             }
           }
         }
@@ -53,7 +53,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "Report not found."
+                  "example": "Asu identity not found."
                 }
               }
             }

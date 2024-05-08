@@ -1,6 +1,6 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
+    "tags": ["Principal"],
     "summary": "Get details about a principal.",
     "description": "Returns the details about the principle by asuritId.",
     "parameters": [

@@ -1,17 +1,18 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
-    "summary": "Get details about an asu identity.",
-    "description": "Returns the details about an asu identity.",
+    "tags": ["Academic-reports"],
+    "summary": "Get academic Status Reports for a given student.",
+    "description": "Returns the details Academic Status Reports for a given student.",
     "parameters": [
       {
         "name": "emplid",
-        "in": "query",
-        "description": "The employe id of the asu identity",
+        "in": "path",
+        "required": true,
+        "description": "The employe id.",
         "schema": {
           "type": "string"
         },
-        "example": "1000422805"
+        "example": "2000012345"
       }
     ],
     "responses": {
@@ -20,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/person.json"
+              "$ref": "../../schemas/academicReport.json"
             }
           }
         }
@@ -52,7 +53,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "Asu identities not found."
+                  "example": "Report not found."
                 }
               }
             }

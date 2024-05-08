@@ -1,18 +1,28 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["Service"],
+    "summary": "Get service subscriptions for asurite namespace principals",
+    "description": "Returns service subscriptions (from EDNA) for asurite namespace principals by  quering  asuriteid, servicePath, or serviceKey.",
     "parameters": [
       {
-        "name": "emplid",
+        "name": "asuriteid",
         "in": "path",
-        "required": true,
-        "description": "The employe id of the asu identity",
+        "description": "The asuriteid of the subscription",
         "schema": {
           "type": "string"
         },
-        "example": "1000422805"
+        "example": "ssundevil"
+      },
+
+      {
+        "name": "filter",
+        "in": "query",
+        "description": "Filter to include only the active subscription",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "active"
       }
     ],
     "responses": {
@@ -21,7 +31,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/person.json"
+              "$ref": "../../schemas/service.json"
             }
           }
         }
@@ -53,7 +63,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "Asu identity not found."
+                  "example": "subscription not found."
                 }
               }
             }

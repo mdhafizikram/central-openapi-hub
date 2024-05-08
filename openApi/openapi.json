@@ -27,8 +27,28 @@
       "description": "Operations related to codeset"
     },
     {
-      "name": "Private-APIs",
-      "description": "Operations related to private APIs"
+      "name": "Enrollment",
+      "description": "Operations related to Enrollment"
+    },
+    {
+      "name": "Jobs",
+      "description": "Operations related to jobs"
+    },
+    {
+      "name": "Person",
+      "description": "Operations related to person identity"
+    },
+    {
+      "name": "Principal",
+      "description": "Operations related to principal"
+    },
+    {
+      "name": "Service",
+      "description": "Operations related to principal"
+    },
+    {
+      "name": "Academic-reports",
+      "description": "Operations related to principal"
     }
   ],
   "paths": {
@@ -135,31 +155,31 @@
       "$ref": "./resources/acad-plan/acadPlans.json"
     },
     "/api/codeset/acad-plan/{acadPlanCode}": {
-      "$ref": "./resources/acadplan/academicPlan.json"
+      "$ref": "./resources/acad-plan/acadPlanByCode.json"
     },
     "/api/service-subscription/asuriteid/{asuriteid}": {
-      "$ref": "./resources/privateAPIs/service.json"
+      "$ref": "./resources/service/service.json"
     },
     "/api/principal/asuriteid/{asuriteid}?include=ownerDetail": {
-      "$ref": "./resources/privateAPIs/principalOwnerDetail.json"
+      "$ref": "./resources/principal/principalOwnerDetail.json"
     },
     "/api/principal/asuriteid/{asuriteid}": {
-      "$ref": "./resources/privateAPIs/principal.json"
+      "$ref": "./resources/principal/principal.json"
     },
     "/api/person/{emplid}": {
-      "$ref": "./resources/privateAPIs/person.json"
+      "$ref": "./resources/person/person.json"
     },
     "/api/person": {
-      "$ref": "./resources/privateAPIs/personByEmplid.json"
+      "$ref": "./resources/person/personByEmplid.json"
     },
     "/api/enrollment/class/{strm}/{classNumber}": {
-      "$ref": "./resources/privateAPIs/enrollment.json"
+      "$ref": "./resources/enrollment/enrollment.json"
     },
     "/api/academic-status-report/emplid/{emplid}": {
-      "$ref": "./resources/privateAPIs/academicStatusReport.json"
+      "$ref": "./resources/academicReports/academicStatusReport.json"
     },
     "/api/jobs/employee/emplid/{emplid}": {
-      "$ref": "./resources/privateAPIs/jobs.json"
+      "$ref": "./resources/jobs/jobs.json"
     }
   },
   "components": {

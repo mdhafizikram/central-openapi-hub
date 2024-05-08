@@ -1,17 +1,28 @@
 {
   "get": {
-    "tags": ["Private-APIs"],
-    "summary": "Get details about an asu identity.",
-    "description": "Returns the details about an asu identity.",
+    "tags": ["Principal"],
+    "summary": "Get details about a principal.",
+    "description": "Returns the details about the principle along with owner details.",
     "parameters": [
       {
-        "name": "emplid",
+        "name": "asuriteid",
         "in": "path",
-        "description": "The employe id of the asu identity",
+        "description": "The asuriteid of the principal",
         "schema": {
           "type": "string"
         },
-        "example": "1000422805"
+        "example": "myasuplat_dpl_app"
+      },
+
+      {
+        "name": "include",
+        "in": "query",
+        "description": "Include the principal owner detail",
+
+        "schema": {
+          "type": "string"
+        },
+        "example": "ownerDetail"
       }
     ],
     "responses": {
@@ -20,7 +31,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/person.json"
+              "$ref": "../../schemas/principal.json"
             }
           }
         }
@@ -52,7 +63,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "Asu identity not found."
+                  "example": "principal not found."
                 }
               }
             }
