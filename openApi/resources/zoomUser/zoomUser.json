@@ -1,8 +1,8 @@
 {
   "get": {
-    "tags": ["Jobs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["ZoomUser"],
+    "summary": "Get data about a provisioned zoom user, by emplid.",
+    "description": "Returns the data about a provisioned zoom user, by emplid",
     "parameters": [
       {
         "name": "emplid",
@@ -13,16 +13,6 @@
           "type": "string"
         },
         "example": "1000422805"
-      },
-      {
-        "name": "include",
-        "in": "query",
-        "required": false,
-        "description": "Include additional person data in the response.",
-        "schema": {
-          "type": "string"
-        },
-        "example": "person"
       }
     ],
     "responses": {
@@ -31,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/jobs.json"
+              "$ref": "../../schemas/zoomUser.json"
             }
           }
         }
@@ -63,7 +53,7 @@
                 "error": {
                   "type": "string",
                   "description": "Error message for course not found.",
-                  "example": "Asu identity not found."
+                  "example": "User  not found."
                 }
               }
             }

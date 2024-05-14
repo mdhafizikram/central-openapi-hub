@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "oprid": {
+      "type": "string",
+      "example": "OP123"
+    },
+    "roleName": {
+      "type": "string",
+      "example": "Administrator"
+    }
+  }
+}

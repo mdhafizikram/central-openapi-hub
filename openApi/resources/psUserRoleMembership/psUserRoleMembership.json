@@ -1,28 +1,18 @@
 {
   "get": {
-    "tags": ["Jobs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["UserRole"],
+    "summary": "Get peoplesoft user security role memberships.",
+    "description": "Returns peoplesoft user security role memberships, by oprid or roleName.",
     "parameters": [
       {
-        "name": "emplid",
+        "name": "oprid",
         "in": "path",
         "required": true,
-        "description": "The employe id of the asu identity",
+        "description": "The oprid or role name",
         "schema": {
           "type": "string"
         },
         "example": "1000422805"
-      },
-      {
-        "name": "include",
-        "in": "query",
-        "required": false,
-        "description": "Include additional person data in the response.",
-        "schema": {
-          "type": "string"
-        },
-        "example": "person"
       }
     ],
     "responses": {
@@ -31,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/jobs.json"
+              "$ref": "../../schemas/psUserRoleMembership.json"
             }
           }
         }

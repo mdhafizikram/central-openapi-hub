@@ -1,28 +1,18 @@
 {
   "get": {
-    "tags": ["Jobs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["Mail-Address"],
+    "summary": "Getuser mailing/postal address data.",
+    "description": "Returns user mailing/postal address data, by emplid or usa-state-code",
     "parameters": [
       {
         "name": "emplid",
         "in": "path",
         "required": true,
-        "description": "The employe id of the asu identity",
+        "description": "The employe id",
         "schema": {
           "type": "string"
         },
         "example": "1000422805"
-      },
-      {
-        "name": "include",
-        "in": "query",
-        "required": false,
-        "description": "Include additional person data in the response.",
-        "schema": {
-          "type": "string"
-        },
-        "example": "person"
       }
     ],
     "responses": {
@@ -31,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/jobs.json"
+              "$ref": "../../schemas/mailingAddress.json"
             }
           }
         }

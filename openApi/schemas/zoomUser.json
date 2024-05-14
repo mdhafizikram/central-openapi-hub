@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "emplid": {
+      "type": "string",
+      "example": "E13579"
+    },
+    "id": {
+      "type": "string",
+      "example": "ZU98765"
+    },
+    "personalMeetingId": {
+      "type": "string",
+      "example": "PMID123"
+    },
+    "personalMeetingUrl": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://zoom.us/j/1234567890"
+    },
+    "profilePictureUrl": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://example.com/profile.jpg"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2023-05-15T10:30:00Z"
+    },
+    "lastLoginTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2024-04-01T08:45:00Z"
+    },
+    "status": {
+      "type": "string",
+      "example": "Active"
+    },
+    "accountId": {
+      "type": "string",
+      "example": "AC987654"
+    },
+    "email": {
+      "type": "string",
+      "example": "john.doe@example.com"
+    }
+  }
+}

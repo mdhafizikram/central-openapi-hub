@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "strm": {
+      "type": "string",
+      "example": "2241"
+    },
+    "classNumber": {
+      "type": "string",
+      "example": "12345"
+    },
+    "lastChangedByPrincipal": {
+      "type": "string",
+      "example": "johndoe"
+    },
+    "overrideZoomMeetingId": {
+      "type": "string",
+      "example": "ZOOM123"
+    },
+    "overrideAsuSyncEnabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "overrideAsuSyncEngagementNavigationDisabled": {
+      "type": "boolean",
+      "example": false
+    }
+  }
+}

@@ -1,28 +1,18 @@
 {
   "get": {
-    "tags": ["Jobs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["Student-membership"],
+    "summary": "Get  student group memberships, by student or by student group code.",
+    "description": "Return student group memberships, by student or by student group code",
     "parameters": [
       {
-        "name": "emplid",
+        "name": "studentGroupCode",
         "in": "path",
         "required": true,
-        "description": "The employe id of the asu identity",
+        "description": "The student group id",
         "schema": {
           "type": "string"
         },
-        "example": "1000422805"
-      },
-      {
-        "name": "include",
-        "in": "query",
-        "required": false,
-        "description": "Include additional person data in the response.",
-        "schema": {
-          "type": "string"
-        },
-        "example": "person"
+        "example": "SG001"
       }
     ],
     "responses": {
@@ -31,7 +21,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/jobs.json"
+              "$ref": "../../schemas/studentMembershipGroup.json"
             }
           }
         }

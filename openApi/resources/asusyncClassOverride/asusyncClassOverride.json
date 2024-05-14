@@ -1,28 +1,28 @@
 {
   "get": {
-    "tags": ["Jobs"],
-    "summary": "Get HR job data by emplid.",
-    "description": "Returns the HR job data.",
+    "tags": ["AsuSync-Class"],
+    "summary": "Get override data for ASU Sync classes, by strm/classNumber.",
+    "description": "Returns override data for ASU Sync classes, by strm/classNumber.",
     "parameters": [
       {
-        "name": "emplid",
+        "name": "strm",
         "in": "path",
         "required": true,
-        "description": "The employe id of the asu identity",
+        "description": "The term code ",
         "schema": {
           "type": "string"
         },
-        "example": "1000422805"
+        "example": "2247"
       },
       {
-        "name": "include",
-        "in": "query",
+        "name": "classNumber",
+        "in": "path",
         "required": false,
-        "description": "Include additional person data in the response.",
+        "description": "",
         "schema": {
-          "type": "string"
+          "type": "integer"
         },
-        "example": "person"
+        "example": "63151"
       }
     ],
     "responses": {
@@ -31,7 +31,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../../schemas/jobs.json"
+              "$ref": "../../schemas/asusyncClassOverride.json"
             }
           }
         }

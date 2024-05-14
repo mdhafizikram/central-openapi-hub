@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "studentGroupCode": {
+      "type": "string",
+      "example": "SG001"
+    },
+    "description": {
+      "type": "string",
+      "example": "Honors Program"
+    },
+    "effectiveDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2024-01-01"
+    },
+    "effectiveStatus": {
+      "type": "string",
+      "example": "Active"
+    },
+    "studentFinancialsTuitionGroup": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

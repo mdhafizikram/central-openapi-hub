@@ -1,0 +1,165 @@
+{
+  "type": "object",
+  "properties": {
+    "emplid": {
+      "type": "string",
+      "example": "E12345"
+    },
+    "employmentRecordNumber": {
+      "type": "string",
+      "example": "ER56789"
+    },
+    "jobIndicatorCode": {
+      "type": "string",
+      "example": "J001"
+    },
+    "employeeStatusCode": {
+      "type": "string",
+      "example": "A"
+    },
+    "employeeStatusDescription": {
+      "type": "string",
+      "example": "Active"
+    },
+    "title": {
+      "type": "string",
+      "example": "Software Engineer"
+    },
+    "departmentId": {
+      "type": "string",
+      "example": "D001"
+    },
+    "departmentDescription": {
+      "type": "string",
+      "example": "Engineering Department"
+    },
+    "locationCode": {
+      "type": "string",
+      "example": "L001"
+    },
+    "locationDescription": {
+      "type": "string",
+      "example": "Headquarters"
+    },
+    "fte": {
+      "type": "number",
+      "example": 1.0
+    },
+    "employeeClassificationCode": {
+      "type": "string",
+      "example": "EC001"
+    },
+    "employeeClassificationDescription": {
+      "type": "string",
+      "example": "Full-time Employee"
+    },
+    "treeLevelNumber": {
+      "type": "integer",
+      "example": 2
+    },
+    "parentDepartment": {
+      "type": "object",
+      "properties": {
+        "departmentId": {
+          "type": "string",
+          "example": "D002"
+        },
+        "departmentDescription": {
+          "type": "string",
+          "example": "Software Development"
+        },
+        "locationCode": {
+          "type": "string",
+          "example": "L001"
+        },
+        "locationDescription": {
+          "type": "string",
+          "example": "Headquarters"
+        },
+        "treeLevelNumber": {
+          "type": "integer",
+          "example": 1
+        },
+        "parentDepartment": {
+          "type": "object",
+          "properties": {
+            "departmentId": {
+              "type": "string",
+              "example": "D000"
+            },
+            "departmentDescription": {
+              "type": "string",
+              "example": "Company"
+            },
+            "locationCode": {
+              "type": "string",
+              "example": "L001"
+            },
+            "locationDescription": {
+              "type": "string",
+              "example": "Headquarters"
+            },
+            "treeLevelNumber": {
+              "type": "integer",
+              "example": 0
+            },
+            "parentDepartment": {
+              "type": "null",
+              "example": null
+            }
+          }
+        }
+      }
+    },
+    "person": {
+      "type": "object",
+      "properties": {
+        "personId": {
+          "type": "string",
+          "example": "P123"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@example.com"
+        },
+        "phone": {
+          "type": "string",
+          "example": "+1-234-567-8901"
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string",
+              "example": "123 Main St"
+            },
+            "city": {
+              "type": "string",
+              "example": "Anytown"
+            },
+            "state": {
+              "type": "string",
+              "example": "CA"
+            },
+            "postalCode": {
+              "type": "string",
+              "example": "12345"
+            },
+            "country": {
+              "type": "string",
+              "example": "USA"
+            }
+          }
+        }
+      }
+    }
+  }
+}

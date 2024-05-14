@@ -56,6 +56,26 @@
     {
       "name": "Academic-reports",
       "description": "Operations related to principal"
+    },
+    {
+      "name": "ZoomUser",
+      "description": "Operations related to provisioned zoom user"
+    },
+    {
+      "name": "UserRole",
+      "description": "Operations related to  user security role memberships"
+    },
+    {
+      "name": "Phone",
+      "description": "Operations related to  phone number data,"
+    },
+    {
+      "name": "Mail-Address",
+      "description": "Operations related to user mailing/postal address data"
+    },
+    {
+      "name": "AsuSync-Class",
+      "description": "Operations related to  data for ASU Sync classes"
     }
   ],
   "paths": {
@@ -187,6 +207,24 @@
     },
     "/api/jobs/employee/emplid/{emplid}": {
       "$ref": "./resources/jobs/jobs.json"
+    },
+    "/api/mailing-address/emplid/{emplid}": {
+      "$ref": "./resources/mailAddress/mailingAddress.json"
+    },
+    "/api/asusync-class-override/{strm}/{classNumber}": {
+      "$ref": "./resources/asusyncClassOverride/asusyncClassOverride.json"
+    },
+    "/api/phone/emplid/{emplid}": {
+      "$ref": "./resources/phoneData/phone.json"
+    },
+    "/api/student-group-membership/student-group/{studentGroupCode}": {
+      "$ref": "./resources/studentMembershipGroup/studentMembershipGroup.json"
+    },
+    "/api/zoom-user/emplid/{emplid}": {
+      "$ref": "./resources/zoomUser/zoomUser.json"
+    },
+    "/api/ps-user-role-membership/oprid/{oprid}": {
+      "$ref": "./resources/psUserRoleMembership/psUserRoleMembership.json"
     }
   },
   "components": {
@@ -250,6 +288,33 @@
       },
       "AcademicPlan": {
         "$ref": "./schemas/academicPlan.json"
+      },
+      "AcademicReport": {
+        "$ref": "./schemas/academicReport.json"
+      },
+      "AsuSyncClass": {
+        "$ref": "./schemas/asusyncClassOverride.json"
+      },
+      "Jobs": {
+        "$ref": "./schemas/jobs.json"
+      },
+      "MailAddress": {
+        "$ref": "./schemas/mailingAddress.json"
+      },
+      "Phone": {
+        "$ref": "./schemas/phone.json"
+      },
+      "StudentMembershipGroup": {
+        "$ref": "./schemas/studentMembershipGroup.json"
+      },
+      "ZoomUser": {
+        "$ref": "./schemas/zoomUser.json"
+      },
+      "PSUserRoleMembership": {
+        "$ref": "./schemas/psUserRoleMembership.json"
+      },
+      "Principal": {
+        "$ref": "./schemas/principal.json"
       }
     }
   }

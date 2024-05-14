@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "emplid": {
+      "type": "string",
+      "example": "E24680"
+    },
+    "phoneTypeCode": {
+      "type": "string",
+      "example": "MOBILE"
+    },
+    "phoneTypeDescription": {
+      "type": "string",
+      "example": "Mobile Phone"
+    },
+    "phoneCountryCode": {
+      "type": "string",
+      "example": "+1"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "example": "1234567890"
+    },
+    "phoneExtension": {
+      "type": "string",
+      "example": "1234"
+    },
+    "preferredPhone": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

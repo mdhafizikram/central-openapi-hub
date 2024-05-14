@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "properties": {
+    "emplid": {
+      "type": "string",
+      "example": "E67890"
+    },
+    "addressTypeCode": {
+      "type": "string",
+      "example": "HOME"
+    },
+    "addressTypeDescription": {
+      "type": "string",
+      "example": "Home Address"
+    },
+    "addressTypeOrderBySequence": {
+      "type": "integer",
+      "example": 1
+    },
+    "addressLine1": {
+      "type": "string",
+      "example": "456 Elm St"
+    },
+    "addressLine2": {
+      "type": "string",
+      "example": "Apt 101"
+    },
+    "addressLine3": {
+      "type": "string",
+      "example": ""
+    },
+    "addressLine4": {
+      "type": "string",
+      "example": ""
+    },
+    "city": {
+      "type": "string",
+      "example": "Smalltown"
+    },
+    "stateCode": {
+      "type": "string",
+      "example": "CA"
+    },
+    "stateDescription": {
+      "type": "string",
+      "example": "California"
+    },
+    "postalCode": {
+      "type": "string",
+      "example": "54321"
+    },
+    "countryCode": {
+      "type": "string",
+      "example": "US"
+    },
+    "countryDescription": {
+      "type": "string",
+      "example": "United States"
+    }
+  }
+}
