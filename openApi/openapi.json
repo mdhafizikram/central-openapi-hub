@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Data Potluck API's",
+    "title": "Data Potluck APIs",
     "description": "Our API allows users to effortlessly explore a wide range of courses offered by various Colleges and Schools at Arizona State University. With intuitive endpoints and comprehensive filters, users can easily navigate through different academic programs, view course details, and access essential information, empowering them to make informed decisions about their educational journey at ASU.",
     "contact": {
       "email": "customerservice@asu.edu"
@@ -18,6 +18,11 @@
           "enum": ["api", "mock"]
         }
       }
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "tags": [
@@ -315,6 +320,14 @@
       },
       "Principal": {
         "$ref": "./schemas/principal.json"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "The API uses JWT Bearer Token for authentication. Please provide the token without the 'Bearer' prefix.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

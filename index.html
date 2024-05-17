@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="SwaggerUI" />
-    <title>Central Swagger UI Hub</title>
+    <title>SwaggerUI</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui.min.css"
@@ -11,52 +12,36 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- Include Tailwind CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
     <style>
-      .course-info {
-        margin: 20px;
-      }
-      .api-info p {
-        margin-bottom: 10px;
+      .swagger-ui .topbar {
+        display: none;
       }
     </style>
   </head>
 
   <body>
-    <div class="header bg-gray-500 text-white py-10 text-center mt-8">
-      <h1 class="text-3xl font-bold">Welcome to the Central Swagger UI Hub</h1>
-    </div>
-
-    <div class="container mx-auto mt-8">
-      <div
-        class="course-info bg-gray-100 border border-gray-300 rounded-lg p-6"
-      >
-        <div class="api-info">
-          <p class="font-semibold">DATA POTLUCK API</p>
-          <p class="text-sm">
-            Description: This API allows users to effortlessly explore a wide
-            range of courses offered by various Colleges and Schools at Arizona
-            State University.
-          </p>
-          <p class="text-sm">Version: 1.0</p>
-        </div>
-        <button
-          class="button bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4"
-          onclick="loadSwaggerUI('course-app')"
-        >
-          Explore APIs
-        </button>
-      </div>
-    </div>
-
+    <div id="swagger-ui"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui-bundle.min.js"
+      integrity="sha512-Oyp7xNHbiqXREQwbwSbshTEOEV1jkBOXbkYECDesbW1IdY0pII8fsCT+LMULYGYp4wGy/9oPOyrtVNWnqhNZsg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.15.2/swagger-ui-standalone-preset.min.js"
+      integrity="sha512-UDDH+CssLO201s4ZfdnN9mKNPtD2j0FWPXDZ8MDy8HmbdErs5Epx1E5QH5eokVY2NRTBIEmdmcMttW8UeKDEBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
-      function loadSwaggerUI(appName) {
-        window.location.href = `./openApi/index.html`;
-      }
+      window.onload = () => {
+        window.ui = SwaggerUIBundle({
+          url: "/openApi/openapi.json",
+          dom_id: "#swagger-ui",
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          layout: "StandaloneLayout",
+        });
+      };
     </script>
   </body>
 </html>
