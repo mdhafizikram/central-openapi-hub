@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://{environment}.myasuplat-dpl.asu.edu",
+      "url": "https://myasuplat-dpl.asu.edu",
       "variables": {
         "environment": {
           "default": "api",

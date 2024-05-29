@@ -47,3 +47,14 @@ Contributions are welcome! If you'd like to contribute to the Central OpenAPI Hu
 3. Make your changes and commit them.
 4. Push your changes to your forked repository.
 5. Submit a pull request to the main repository.
+
+## Dynamically loading the domain
+
+Provide a placeholder to the domain url , enter the the domain value in the replace_url.sh file
+
+1.  chmod +x replace_url.sh
+2.  ./replace_url.sh
+
+## If changes required
+
+1.  nonao ./replace_url.sh
